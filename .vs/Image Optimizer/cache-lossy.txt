@@ -1,0 +1,12 @@
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\next.png|1104
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\loading.gif|8476
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\favicon.png|390
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\beach.jpg|226462
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\ceili-jump.jpg|65591
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\close.png|273
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\road.jpg|311373
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\ClubLogo90.png|3444
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\skyline2.jpg|184041
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\mountain.jpg|35998
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\agility-tunnel.png|483259
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\black_wall.png|18316

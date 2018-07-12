@@ -1,0 +1,6 @@
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\ClubLogo90.png|3444
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\loki-jump-narrow.png|394413
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\ceili-jump.jpg|65591
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\loading.gif|8476
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\loki-jumping.jpg|21919
+C:\Users\mark.dunnen\Documents\Visual Studio 2017\Projects\CliftonSiteV2\CliftonSiteV2\ClientApp\src\assets\img\map.png|752973

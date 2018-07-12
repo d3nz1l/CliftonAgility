@@ -1,0 +1,31 @@
+@import '../../styles/material-style/themes/_blue-800';
+
+.two_cols {
+  width: 100%;
+  overflow: hidden;
+
+  li {
+    float: left;
+    width: 50%;
+
+    a {
+      display: block;
+      padding: 2px 0;
+
+      i {
+        margin-right: 10px;
+        width: 15px;
+        text-align: center;
+        color: $color-info-light;
+      }
+
+      &:hover {
+        i {
+          transition: all ease 0.5s;
+          color: $color-warning-light;
+          transform: rotateY(360deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<div class="material-background"></div>
+<div class="container">
+  <div class="card wow animated slideInUp">
+    <div class="card-body-big">
+      <h1 class="color-primary">About Us</h1>
+      <p>
+        Clifton Agility Club was started in the eighties and has been thriving ever since then. We started dog agility training in the Winford Riding for the Disabled Centre and moved to our present site at Chelvey Court Farm in the nineties.
+      </p>
+      <p>
+        We are Kennel Club registered training club and have running classes for over 30 years. Our trainers have a wealth of experience and are happing to help where ever possible. We cater for all levels and have classes from Bcomplete beginner to champ level.
+      </p>
+      <p>
+        We are also a social club and enjoy quite a few social events throughout the year. These include the summer barbecue, the Christmas meal and New Year dog walk and meal. New members are always welcome, as well as their families.
+      </p>
+    </div>
+    <img src="assets/img/loki-jump-narrow.png" alt="" class="img-fluid">
+    <div class="card-body-big">
+      <h1 class="color-primary">Training</h1>
+      <p>
+        We train every Wednesday between 7pm and 10pm. This is split between 6 classes, with 2 classes working at the same time. Each class is 45min long, and beginners starting in Class 1.
+      </p>
+      <div class="row">
+        <div *ngFor="let name of trainers; index as i" class="col-xl-3 col-md-6">
+          <div class="card card-{{colors.GetColorForLight(i)}} card-flat">
+            <div class="card-body overflow-hidden text-center">
+              <h4 class="color-{{colors.GetColorForLight(i)}}">{{ name }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/img/freya-jump.jpg" alt="" class="img-fluid">
+    <div class="card-body-big">
+      <h1 class="color-primary">The Committee</h1>
+      <div class="row">
+        <div class="col-xl-3 col-md-6" *ngFor="let member of committee; index as i">
+          <div class="card card-{{colors.GetColorForLight(i)}} wow zoomInUp animated mb-4 animation-delay-5">
+            <div class="withripple zoom-img">
+              <img src="{{member.image()}}" alt="..." class="img-fluid">
+            </div>
+            <div class="card-body">
+              <h3 class="color-{{colors.GetColorForLight(i)}}">{{member.name}}</h3>
+              <p>{{member.position}}&nbsp;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
