@@ -72,6 +72,13 @@
   background-repeat: no-repeat;
 }
 
+.ms-hero-img-tunnel {
+  background-image: url('../../assets/img/agility-tunnel.png');
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
 .ms-hero-border-danger {
   border-top: 3px solid $color-danger;
   border-left: 3px solid $color-danger;

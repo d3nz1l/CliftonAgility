@@ -1,3 +1,36 @@
-<div style="height: 500px">
-
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomLevel">
+  <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="pushpin">
+  </agm-marker>
+</agm-map>
+<div class="our-venue__overlay">
+  <div class="ms-collapse" id="accordion2">
+    <div class="mb-0 card card-default">
+      <div class="card-header" role="tab" id="headingOne2">
+        <h4 class="card-title">
+          <a class="withripple collapsed" role="button" data-toggle="collapse" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+            <i class="zmdi zmdi-pin"></i> Our Venue <div class="ripple-container"></div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne2" class="card-collapse collapse show" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordion2" style="">
+        <div class="card-body">
+          <h3 class="color-primary">Address</h3>
+          <address>
+            <p>
+              Chelvey Court Farm<br />
+              Chelvey Road<br />
+              Backwell<br />
+              Bristol<br />
+              BS48 4AA
+            </p>
+          </address>
+          <h3 class="color-primary">Training Times</h3>
+          <p>
+            Wednesday: 19:00 - 22:00
+          </p>
+          <a href="http://maps.google.com/maps?&z=13&q=51.4115062667691+-2.76832604408264&ll=51.4115062667691+-2.76832604408264" target="_blank" class="btn btn-lg btn-raised btn-info"><i class="zmdi zmdi-turning-sign"></i>  Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
