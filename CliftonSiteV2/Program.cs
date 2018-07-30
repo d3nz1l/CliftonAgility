@@ -7,6 +7,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Web;
+using Unity.Microsoft.DependencyInjection;
 
 namespace CliftonSiteV2
 {
@@ -14,11 +17,26 @@ namespace CliftonSiteV2
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+
+            try
+            {
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Failed to start Clifton Agility website");
+            }
+            finally
+            {
+                LogManager.Shutdown();
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseUnityServiceProvider()
+                .UseStartup<Startup>()
+                .UseNLog();
     }
 }

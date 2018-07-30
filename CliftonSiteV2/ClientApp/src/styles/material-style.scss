@@ -1,3 +1,10 @@
 @import 'material-style/themes/_blue-800';
 
 @import 'material-style/style.themed';
+
+/*Overrides*/
+.card-hero .card-body {
+  padding: 2rem;
+}
+
+@import 'validation';

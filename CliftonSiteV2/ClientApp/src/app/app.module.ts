@@ -67,7 +67,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
           { path: 'our-venue', component: OurVenueComponent }
         ]
       }
-    ])
+    ], {
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled'
+      })
   ],
   providers: [
     ColorHelper

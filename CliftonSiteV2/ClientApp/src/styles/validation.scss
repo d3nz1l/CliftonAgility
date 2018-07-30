@@ -1,0 +1,13 @@
+@import 'material-style/themes/_blue-800';
+
+.val {
+  &-invalid {
+    color: $color-danger-dark;
+    border-color: $color-danger;
+
+    input, select, textarea {
+      color: $color-danger;
+      background-image: linear-gradient($color-light, $color-light), linear-gradient($color-danger, $color-danger) !important;
+    }
+  }
+}

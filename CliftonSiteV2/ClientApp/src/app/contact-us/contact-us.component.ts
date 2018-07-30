@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,16 +10,52 @@ import { Component } from '@angular/core';
 })
 export class ContactUsComponent {
 
+  private http: HttpClient;
+  private baseUrl: string;
+  private sending: boolean = false;
+  private messageSent: boolean = false;
+
   private questionTypes = [
-    { id: "", name: "Selct a question..." },
-    { id: "0", name: "Request Information" },
-    { id: "1", name: "Membership Enquiry" },
-    { id: "2", name: "Send us a comment" },
-    { id: "3", name: "Sell us something/Make us an offer" },
-    { id: "4", name: "Any Other Question" },
+    { id: "1", name: "Request Information" },
+    { id: "2", name: "Membership Enquiry" },
+    { id: "3", name: "Send us a comment" },
+    { id: "4", name: "Sell us something/Make us an offer" },
+    { id: "5", name: "Any Other Question" },
   ];
 
   private model: ContactUsModel = new ContactUsModel();
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title) {
+
+    this.http = http;
+    this.baseUrl = baseUrl;
+
+    title.setTitle("Contact Us");
+  }
+
+  private sendMessage(form: NgForm) {
+
+    if (!form.valid) {
+
+      return;
+    }
+
+    this.sending = true;
+
+    this.http
+      .post(this.baseUrl + "api/message/email", this.model)
+      .subscribe(
+        result => {
+
+          this.sending = false;
+          this.messageSent = true;
+        },
+        error => {
+
+          this.sending = false;
+          this.messageSent = false;
+        });
+  }
 }
 
 class ContactUsModel {
@@ -30,4 +69,12 @@ class ContactUsModel {
   public questionType: string = "";
 
   public message: string = "";
+}
+
+enum QuestionType {
+  RequestInfo = 1,
+  Membership,
+  Comment,
+  SellToUs,
+  Other
 }
