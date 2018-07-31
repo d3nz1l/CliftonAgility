@@ -50,7 +50,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-5">
+      <div class="col-xl-6 col-lg-5 d-none d-lg-block">
         <div class="ms-hero-img animated zoomInUp animation-delay-12">
           <img src="assets/img/hero/clublogo.png" alt="" class="img-fluid">
 
@@ -63,14 +63,11 @@
 <!-- ms-hero ms-hero-black -->
 <div class="container mt-4">
   <h2 class="text-center color-primary mb-2 wow animated fadeInDown animation-delay-4">
-    Welcome to our site.
+    Looking for more information about <span class="color-primary">agility</span>?
   </h2>
   <p class="lead text-center aco wow animated fadeInDown animation-delay-5 mw-800 center-block mb-4">
-    Looking for more information about <span class="color-primary">agility</span>? Have a look around and get in touch  with us if want to have a go.
+    Have a look around our site to find out more. Get in touch with us if want to have a go.
   </p>
-</div>
-
-<div class="wrap wrap-mountain wrap-tunnel">
   <div class="container pt-6">
     <div class="row">
       <div class="col-lg-6 order-lg-2 mb-4 center-block">
@@ -85,9 +82,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="container mt-4">
   <div class="row">
     <div class="col-lg-4 col-sm-6">
       <div class="card mt-4 card-danger wow  animated zoomInUp animation-delay-7">
@@ -99,7 +93,7 @@
         <div class="card-body pt-6 text-center">
           <h3 class="color-danger">About Us</h3>
           <p>You can find out more abous here. Including information on our history, the trainers and the committee</p>
-          <a href="javascript:void(0)" class="btn btn-raised btn-danger mt-1 mr-1 no-mr-md">
+          <a [routerLink]='["/about-us"]' class="btn btn-raised btn-danger mt-1 mr-1 no-mr-md">
             <i class="zmdi zmdi-info-outline"></i>
             Learn More
           </a>
@@ -116,7 +110,7 @@
         <div class="card-body pt-6 text-center">
           <h3 class="color-info">Become a Member</h3>
           <p>Looking to start agility with your dog, or would to join with your existing agility dog. Get in contact with us.</p>
-          <a href="javascript:void(0)" class="btn btn-raised btn-info mt-1 mr-1 no-mr-md">
+          <a [routerLink]='["/membership"]' class="btn btn-raised btn-info mt-1 mr-1 no-mr-md">
             <i class="zmdi zmdi-account-o"></i>
             Membership
           </a>
@@ -133,7 +127,7 @@
         <div class="card-body pt-6 text-center">
           <h3 class="color-warning">Looking for our venue?</h3>
           <p>We are based in Chelvey, North Somerset. For full details, including our address, directions, go here.</p>
-          <a href="javascript:void(0)" class="btn btn-raised btn-warning mt-1 mr-1 no-mr-md">
+          <a [routerLink]='["/our-venue"]' class="btn btn-raised btn-warning mt-1 mr-1 no-mr-md">
             <i class="zmdi zmdi-pin-drop"></i>
             Find Us
           </a>
@@ -142,3 +136,4 @@
     </div>
   </div>
 </div>
+

@@ -6,43 +6,43 @@
           <h3 class="ms-footbar-title">Sitemap</h3>
           <ul class="list-unstyled ms-icon-list two_cols">
             <li>
-              <a href="index.html">
+              <a [routerLink]='["/"]'>
                 <i class="zmdi zmdi-home"></i> Home
               </a>
             </li>
             <li>
-              <a href="page-blog.html">
-                <i class="zmdi zmdi-edit"></i> About Us
+              <a [routerLink]='["/about-us"]'>
+                <i class="zmdi zmdi-info-outline"></i> About Us
               </a>
             </li>
             <li>
-              <a href="page-blog.html">
-                <i class="zmdi zmdi-image-o"></i> Find Us
+              <a [routerLink]='["/our-venue"]'>
+                <i class="zmdi zmdi-pin-drop"></i> Find Us
               </a>
             </li>
             <li>
-              <a href="portfolio-filters_sidebar.html">
-                <i class="zmdi zmdi-case"></i> Contact Us
+              <a [routerLink]='["/contact-us"]'>
+                <i class="zmdi zmdi-comments"></i> Contact Us
               </a>
             </li>
             <li>
-              <a href="page-timeline_left2.html">
-                <i class="zmdi zmdi-time"></i> New Members
+              <a [routerLink]='["/new-members-form"]'>
+                <i class="zmdi zmdi-accounts-add"></i> New Members Form
               </a>
             </li>
             <li>
-              <a href="page-pricing.html">
-                <i class="zmdi zmdi-money"></i> Club Clothing
+              <a [routerLink]='["/club-clothing"]'>
+                <i class="zmdi zmdi-shopping-basket"></i> Club Clothing
               </a>
             </li>
             <li>
-              <a href="page-about.html">
-                <i class="zmdi zmdi-favorite-outline"></i> Help &amp; Advice
+              <a [routerLink]='["/help-advice"]'>
+                <i class="zmdi zmdi-help-outline"></i> Help &amp; Advice
               </a>
             </li>
             <li>
-              <a href="page-team2.html">
-                <i class="zmdi zmdi-accounts"></i> Downloads
+              <a [routerLink]='["/downloads"]'>
+                <i class="zmdi zmdi-download"></i> Downloads
               </a>
             </li>
           </ul>
@@ -53,7 +53,7 @@
         <div class="ms-footbar-block">
           <h3 class="ms-footbar-title">Contact Us</h3>
           <p class="">Got a question? Get in touch using the button below.</p>
-          <button class="ms-subscribre-btn" type="button">Contact Us</button>
+          <a [routerLink]='["/contact-us"]' class="ms-subscribre-btn btn-circle btn-white">Contact Us</a>
         </div>
         <div class="ms-footbar-block">
           <div class="ms-footbar-social text-center">
