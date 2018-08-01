@@ -14,5 +14,18 @@ agm-map {
     height: 100px;
     left: 0;
     top: 50px;
+    transition: all ease 0.4s;
+
+    &.collapsed {
+      width: 50px;
+
+      .ms-collapse {
+        .card-header {
+          a:after {
+            right: 0.5rem;
+          }
+        }
+      }
+    }
   }
 }

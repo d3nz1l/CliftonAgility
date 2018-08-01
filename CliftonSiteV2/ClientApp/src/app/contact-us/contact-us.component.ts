@@ -16,11 +16,12 @@ export class ContactUsComponent {
   private messageSent: boolean = false;
 
   private questionTypes = [
-    { id: "1", name: "Request Information" },
-    { id: "2", name: "Membership Enquiry" },
-    { id: "3", name: "Send us a comment" },
-    { id: "4", name: "Sell us something/Make us an offer" },
-    { id: "5", name: "Any Other Question" },
+    { value: "", label: "Select a question category..." },
+    { value: "1", label: "Request Information" },
+    { value: "2", label: "Membership Enquiry" },
+    { value: "3", label: "Send us a comment" },
+    { value: "4", label: "Sell us something/Make us an offer" },
+    { value: "5", label: "Any Other Question" },
   ];
 
   private model: ContactUsModel = new ContactUsModel();
@@ -30,7 +31,7 @@ export class ContactUsComponent {
     this.http = http;
     this.baseUrl = baseUrl;
 
-    title.setTitle("Contact Us");
+    title.setTitle("Contact Us - Clifton AC");
   }
 
   private sendMessage(form: NgForm) {

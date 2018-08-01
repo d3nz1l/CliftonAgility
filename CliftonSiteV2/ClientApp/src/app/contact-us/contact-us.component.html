@@ -51,14 +51,7 @@
               <div class="form-group row" [ngClass]="{ 'val-invalid': questionType.invalid && (questionType.dirty || questionType.touched  || contactUsForm.submitted) }">
                 <label for="inputQuestionType" autocomplete="false" class="col-lg-3 control-label">Question:</label>
                 <div class="col-lg-9">
-                  <select class="form-control selectpicker" name="questionType" id="inputQuestionType" [(ngModel)]="model.questionType" #questionType="ngModel" required>
-                    <option value="" selected>Select a question...</option>
-                    <option value="1">Request Information</option>
-                    <option value="2">Membership Enquiry</option>
-                    <option value="3">Send us a comment</option>
-                    <option value="4">Sell us something/Make us an offer</option>
-                    <option value="5">Any Other Question</option>
-                  </select>
+                  <ng-select [items]="questionTypes" class="ca-select" name="questionType" id="inputQuestionType" bindValue="value" [(ngModel)]="model.questionType" #questionType="ngModel" required></ng-select>
                   <div *ngIf="questionType.invalid && (questionType.dirty || questionType.touched  || contactUsForm.submitted)" class="val-message">
                     <div *ngIf="questionType.errors.required">
                       We need this so we can make sure the right person gets your message.
@@ -104,7 +97,9 @@
             Bristol<br />
             BS48 4AA
           </address>
-          <a class="btn btn-lg btn-primary btn-raised" href="#"><i class="zmdi zmdi-pin-drop"></i>Find Us</a>
+          <div class="text-center">
+            <a class="btn btn-lg btn-primary btn-raised" [routerLink]='["/our-venue"]'><i class="zmdi zmdi-pin-drop"></i>Find Us</a>
+          </div>
         </div>
       </div>
       <!--<div class="card card-primary animated fadeInUp animation-delay-7">
@@ -138,7 +133,9 @@
         <div class="card-body">
           <p>Looking to join the club? Fill out the new members form and we'll be in touch.</p>
           <p>The new members form can be found here...</p>
-          <a class="btn btn-lg btn-primary btn-raised" href="#"><i class="zmdi zmdi-account-add"></i>Membership Form</a>
+          <div class="text-center">
+            <a class="btn btn-lg btn-primary btn-raised" [routerLink]='["/new-members-form"]'><i class="zmdi zmdi-account-add"></i>Membership Form</a>
+          </div>
         </div>
       </div>
     </div>

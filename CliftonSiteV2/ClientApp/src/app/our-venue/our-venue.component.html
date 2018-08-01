@@ -2,17 +2,17 @@
   <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="pushpin">
   </agm-marker>
 </agm-map>
-<div class="our-venue__overlay animated fadeInLeft animation-delay-7">
-  <div class="ms-collapse" id="accordion2">
-    <div class="mb-0 card card-default">
-      <div class="card-header" role="tab" id="headingOne2">
+<div class="our-venue__overlay animated fadeInLeft animation-delay-7" [ngClass]="{ 'collapsed': isCollapsed }">
+  <div class="ms-collapse" id="accord-venue">
+    <div class="mb-0 card card-primary">
+      <div class="card-header" role="tab" id="overlay-heading">
         <h4 class="card-title">
-          <a class="withripple collapsed" role="button" data-toggle="collapse" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
-            <i class="zmdi zmdi-pin"></i> Our Venue <div class="ripple-container"></div>
+          <a class="withripple" [ngClass]="{ 'collapsed': isCollapsed }"  role="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="venue-overlay">
+            <i class="zmdi zmdi-pin"></i> <span *ngIf="!isCollapsed">Our Venue</span><div class="ripple-container"></div>
           </a>
         </h4>
       </div>
-      <div id="collapseOne2" class="card-collapse collapse show" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordion2" style="">
+      <div id="venue-overlay" class="card-collapse" [ngClass]="{ 'show': !isCollapsed }" [ngbCollapse]="isCollapsed" role="tabpanel" aria-labelledby="overlay-heading" data-parent="#accord-venue">
         <div class="card-body">
           <h3 class="color-primary">Address</h3>
           <address>

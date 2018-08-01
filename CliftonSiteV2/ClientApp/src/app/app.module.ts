@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 
 /// Vender imports
 import { AgmCoreModule } from '@agm/core';
+import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 /// Component imports
@@ -47,9 +49,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    NgSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0O1HVq24zqR_7c2CbDESfMJZ79Se9GLQ'
     }),
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',

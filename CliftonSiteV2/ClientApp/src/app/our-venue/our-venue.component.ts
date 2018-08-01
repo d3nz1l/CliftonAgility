@@ -10,4 +10,6 @@ export class OurVenueComponent {
   private lng: number = -2.76832604408264;
   private zoomLevel: number = 12;
   private pushpin: String = "assets/img/logopushpin.png";
+
+  private isCollapsed: boolean = window.innerWidth < 720;
 }
