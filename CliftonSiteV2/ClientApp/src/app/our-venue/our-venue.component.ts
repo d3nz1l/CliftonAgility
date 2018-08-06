@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-our-venue',
@@ -6,10 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./our-venue.component.scss']
 })
 export class OurVenueComponent {
-  private lat: number = 51.4115062667691;
-  private lng: number = -2.76832604408264;
-  private zoomLevel: number = 12;
-  private pushpin: String = "assets/img/logopushpin.png";
+  public lat: number = 51.4115062667691;
+  public lng: number = -2.76832604408264;
+  public zoomLevel: number = 12;
+  public pushpin: String = "assets/img/logopushpin.png";
 
-  private isCollapsed: boolean = window.innerWidth < 720;
+  public isCollapsed: boolean = window.innerWidth < 720;
+
+  constructor(title: Title) {
+
+    title.setTitle("Find Us - Clifton AC");
+  }
 }

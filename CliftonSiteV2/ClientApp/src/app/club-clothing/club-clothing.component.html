@@ -1,0 +1,29 @@
+<div class="ms-hero-page-override ms-hero-bgimg ms-hero-bgimg-jumps ms-hero-bg-primary">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Clothing</h1>
+      <p class="lead lead-lg color-light text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">
+        Show everyone you're member of Clifton Agility club.
+        <br>
+        We offer a range of clothing items, all with the club logo embroidered on.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container mt-minus-10">
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 animated zoomInUp animation-delay-7" *ngFor="let item of clothingItems; index as i">
+      <div class="card card-{{colors.GetColorForLight(i)}}">
+        <div class="withripple zoom-img">
+          <a href="javascript:void(0);">
+            <img src="{{ item.image() }}" alt="" class="img-fluid">
+          </a>
+        </div>
+        <div class="card-body overflow-hidden text-center">
+          <h4 class="color-{{colors.GetColorForLight(i)}}">{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

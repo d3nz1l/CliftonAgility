@@ -31,15 +31,21 @@ import { HomeComponent } from './home/home.component';
 import { OurVenueComponent } from './our-venue/our-venue.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ClubClothingComponent } from './club-clothing/club-clothing.component';
+import { DownloadsComponent } from './downloads/downloads.component';
+import { MembershipComponent } from './membership/membership.component';
 
 @NgModule({
   declarations: [
     AboutUsComponent,
     AppComponent,
+    ClubClothingComponent,
     ContactUsComponent,
+    DownloadsComponent,
     FooterComponent,
     HeaderComponent,
     HomeComponent,
+    MembershipComponent,
     NavMenuComponent,
     OurVenueComponent,
     DefaultLayoutComponent,
@@ -61,7 +67,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
         children: [
           { path: '', component: HomeComponent, pathMatch: 'full' },
           { path: 'about-us', component: AboutUsComponent },
-          { path: 'contact-us', component: ContactUsComponent }
+          { path: 'contact-us', component: ContactUsComponent },
+          { path: 'club-clothing', component: ClubClothingComponent },
+          { path: 'downloads', component: DownloadsComponent },
+          { path: 'membership', component: MembershipComponent }
         ]
       },
       {

@@ -1,0 +1,24 @@
+.ms-hero {
+
+  &-bgimg {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &-map {
+      background-image: url('assets/img/map.png');
+    }
+
+    &-jumps {
+      background-image: url('assets/img/agility-jumps.jpg');
+    }
+
+    &-dog-walk {
+      background-image: url('assets/img/dog-walk.jpg');
+    }
+
+    &-tunnel {
+      background-image: url('assets/img/agility-tunnel.png');
+    }
+  }
+}

@@ -12,10 +12,10 @@ export class ContactUsComponent {
 
   private http: HttpClient;
   private baseUrl: string;
-  private sending: boolean = false;
-  private messageSent: boolean = false;
+  public sending: boolean = false;
+  public messageSent: boolean = false;
 
-  private questionTypes = [
+  public questionTypes = [
     { value: "", label: "Select a question category..." },
     { value: "1", label: "Request Information" },
     { value: "2", label: "Membership Enquiry" },
@@ -24,7 +24,7 @@ export class ContactUsComponent {
     { value: "5", label: "Any Other Question" },
   ];
 
-  private model: ContactUsModel = new ContactUsModel();
+  public model: ContactUsModel = new ContactUsModel();
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title) {
 
@@ -34,7 +34,7 @@ export class ContactUsComponent {
     title.setTitle("Contact Us - Clifton AC");
   }
 
-  private sendMessage(form: NgForm) {
+  public sendMessage(form: NgForm) {
 
     if (!form.valid) {
 
