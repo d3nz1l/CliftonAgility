@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CliftonSiteV2.Models;
 using CliftonSiteV2.Services.Email;
-using Microsoft.AspNetCore.Http;
+using CliftonSiteV2.Services.Recaptcha;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CliftonSiteV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ValidateRecaptcha]
     public class MessageController : ControllerBase
     {
         private readonly EmailService emailService;

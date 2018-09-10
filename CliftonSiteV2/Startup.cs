@@ -1,5 +1,7 @@
 using System;
+using CliftonSiteV2.Configuration;
 using CliftonSiteV2.Services.Email;
+using CliftonSiteV2.Services.Recaptcha;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +32,7 @@ namespace CliftonSiteV2
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
+            services.AddHttpClient();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -48,7 +51,7 @@ namespace CliftonSiteV2
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
+                ////app.UseHsts();
             }
 
             app.Use(next => context =>
@@ -66,7 +69,7 @@ namespace CliftonSiteV2
                 return next(context);
             });
 
-            app.UseHttpsRedirection();
+            ////app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -95,6 +98,20 @@ namespace CliftonSiteV2
         {
             // Could be used to register more types
             container.RegisterType<EmailService>();
+            container.RegisterType<IRecaptchaService, RecaptchaService>();
+
+            // Register settings
+            this.RegisterConfigurationInstance<RecaptchaSettings>(container, "RecaptchaSettings");
+        }
+
+        private void RegisterConfigurationInstance<T>(IUnityContainer container, string sectionName)
+            where T : new()
+        {
+            var config = new T();
+
+            this.Configuration.Bind(sectionName, config);
+
+            container.RegisterInstance(typeof(T), config);
         }
     }
 }

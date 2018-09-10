@@ -39,7 +39,7 @@ namespace CliftonSiteV2.Services.Email
 
         private string GetFullTemplateName(string templateName, TemplateType templateType)
         {
-            return $"Services.Email.Messages.Templates.{templateName}.{templateType}.cshtml";
+            return $"Messages.Templates.{templateName}.{templateType}.cshtml";
         }
 
         private enum TemplateType

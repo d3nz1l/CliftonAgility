@@ -15,28 +15,28 @@
     <div class="col-xl-8 col-lg-7">
       <div class="card card-primary animated fadeInUp animation-delay-7">
         <div class="card-body">
-          <form class="form-horizontal" novalidate (ngSubmit)="sendMessage(contactUsForm)" #contactUsForm="ngForm">
+          <form class="form-horizontal" novalidate (ngSubmit)="sendMessage()" [formGroup]="form">
             <fieldset class="container">
-              <div class="form-group row" [ngClass]="{ 'val-invalid': name.invalid && (name.dirty || name.touched  || contactUsForm.submitted) }">
+              <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['name'], null) }">
                 <label for="inputName" autocomplete="false" class="col-lg-3 control-label">Name:</label>
                 <div class="col-lg-9">
-                  <input type="text" class="form-control" name="name" id="inputName" placeholder="Your name..." [(ngModel)]="model.name" #name="ngModel" required />
-                  <div *ngIf="name.invalid && (name.dirty || name.touched  || contactUsForm.submitted)" class="val-message">
-                    <div *ngIf="name.errors.required">
-                      Please tell us your name.
+                  <input type="text" class="form-control" id="inputName" placeholder="Your name..." formControlName="name" />
+                  <div *ngIf="validation.hasError(form, ['name'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['name'], ['required', 'minLength'])">
+                      Please tell us your full name.
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group row" [ngClass]="{ 'val-invalid': emailAddress.invalid && (emailAddress.dirty || emailAddress.touched  || contactUsForm.submitted) }">
+              <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['emailAddress'], null) }">
                 <label for="inputEmail" autocomplete="false" class="col-lg-3 control-label">Email:</label>
                 <div class="col-lg-9">
-                  <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Your email address..." [(ngModel)]="model.emailAddress" #emailAddress="ngModel" required email>
-                  <div *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched  || contactUsForm.submitted)" class="val-message">
-                    <div *ngIf="emailAddress.errors.required">
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Your email address..." formControlName="emailAddress">
+                  <div *ngIf="validation.hasError(form, ['emailAddress'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['emailAddress'], ['required'])">
                       Please tell us your email address.
                     </div>
-                    <div *ngIf="emailAddress.errors.email">
+                    <div *ngIf="validation.hasError(form, ['emailAddress'], ['email'])">
                       Please check your email address.
                     </div>
                   </div>
@@ -45,34 +45,50 @@
               <div class="form-group row">
                 <label for="inputPhone" autocomplete="false" class="col-lg-3 control-label">Phone Number:</label>
                 <div class="col-lg-9">
-                  <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="Your phone number..." [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel" />
+                  <input type="tel" class="form-control" id="inputPhone" placeholder="Your phone number..." formControlName="phoneNumber" />
+                  <div *ngIf="validation.hasError(form, ['phoneNumber'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['phoneNumber'], ['required'])">
+                      We need your phone number so we can contact you.
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="form-group row" [ngClass]="{ 'val-invalid': questionType.invalid && (questionType.dirty || questionType.touched  || contactUsForm.submitted) }">
+              <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['questionType'], null) }">
                 <label for="inputQuestionType" autocomplete="false" class="col-lg-3 control-label">Question:</label>
                 <div class="col-lg-9">
-                  <ng-select [items]="questionTypes" class="ca-select" name="questionType" id="inputQuestionType" bindValue="value" [(ngModel)]="model.questionType" #questionType="ngModel" required></ng-select>
-                  <div *ngIf="questionType.invalid && (questionType.dirty || questionType.touched  || contactUsForm.submitted)" class="val-message">
-                    <div *ngIf="questionType.errors.required">
+                  <ng-select [items]="questionTypes" class="ca-select" id="inputQuestionType" formControlName="questionType"></ng-select>
+                  <div *ngIf="validation.hasError(form, ['questionType'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['questionType'], ['required', 'min'])">
                       We need this so we can make sure the right person gets your message.
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group row" [ngClass]="{ 'val-invalid': message.invalid && (message.dirty || message.touched  || contactUsForm.submitted) }">
+              <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['message'], null) }">
                 <label for="textArea" class="col-lg-3 control-label">Message:</label>
                 <div class="col-lg-9">
-                  <textarea class="form-control" rows="5" name="message" id="textArea" placeholder="Your message..." [(ngModel)]="model.message" #message="ngModel" required></textarea>
-                  <div *ngIf="message.invalid && (message.dirty || message.touched  || contactUsForm.submitted)" class="val-message">
-                    <div *ngIf="message.errors.required">
+                  <textarea class="form-control" rows="5" id="textArea" placeholder="Your message..." formControlName="message"></textarea>
+                  <div *ngIf="validation.hasError(form, ['message'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['message'], ['required'])">
                       Please let us know your message/question.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['recaptcha'], null) }">
+                <label for="textArea" class="col-lg-3 control-label">PLease confirm youn are a person:</label>
+                <div class="col-lg-9">
+                  <re-captcha formControlName="recaptcha"></re-captcha>
+                  <div *ngIf="validation.hasError(form, ['recaptcha'], null)" class="val-message">
+                    <div *ngIf="validation.hasError(form, ['recaptcha'], ['required'])">
+                      Sorry but we've had people sending us automated spam. This helps to stop them.
                     </div>
                   </div>
                 </div>
               </div>
               <div class="form-group row justify-content-end">
                 <div class="col-lg-10">
-                  <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                  <button type="submit" [disabled]="form.invalid" class="btn btn-raised btn-primary">Submit</button>
                 </div>
               </div>
             </fieldset>

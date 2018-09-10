@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { ColorHelper } from '../helpers/color-helper.component';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-membership',
@@ -9,52 +10,68 @@ import { Title } from '@angular/platform-browser';
 })
 export class MembershipComponent {
 
-  public colors: ColorHelper = undefined;
+  private http: HttpClient;
+  private baseUrl: string;
+  public sending: boolean = false;
+  public messageSent: boolean = false;
 
-  public trainers = [
-    "Bryan Reakes",
-    "Carol Avenell",
-    "David Sweeney",
-    "Isobel Mills",
-    "Jean Boniface",
-    "Louise Gilmore",
-    "Mark den Dunnen",
-    "Maureen Reakes",
-    "Pauline Pearce",
-    "Rob Kilby"
-  ];
+  public model: MembershipModel = new MembershipModel();
 
-  public committee = [
-    new CommitteeMember("Rob Kilby", "Chair Person"),
-    new CommitteeMember("Carol Wye", "Secretary"),
-    new CommitteeMember("Isobel Mills", "Treasurer"),
-    new CommitteeMember("Ann Parker", ""),
-    new CommitteeMember("Jean Boniface", ""),
-    new CommitteeMember("Louise Gilmore", ""),
-    new CommitteeMember("Maureen Reakes", ""),
-    new CommitteeMember("Pauline Pearce", "")
-  ];
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title) {
 
-  constructor(colorHelper: ColorHelper, title: Title) {
-    this.colors = colorHelper;
+    this.http = http;
+    this.baseUrl = baseUrl;
 
-    title.setTitle("Join Us - Clifton AC");
+    title.setTitle("Contact Us - Clifton AC");
+  }
+
+  public sendMessage(form: NgForm) {
+
+    if (!form.valid) {
+
+      return;
+    }
+
+    this.sending = true;
+
+    this.http
+      .post(this.baseUrl + "api/message/email", this.model)
+      .subscribe(
+        result => {
+
+          this.sending = false;
+          this.messageSent = true;
+        },
+        error => {
+
+          this.sending = false;
+          this.messageSent = false;
+        });
   }
 }
 
-class CommitteeMember {
-  public name: String;
+class MembershipModel {
 
-  public position: String;
+  public name: string = "";
 
-  constructor(name: String, position: String) {
-    this.name = name;
-    this.position = position;
-  }
+  public emailAddress: string = "";
 
-  public image(): String {
-    let filename = this.name.toLowerCase().replace(" ", "");
+  public phoneNumber: string = "";
 
-    return "/assets/img/committee/" + filename + ".png";
-  }
+  public questionType: string = "6";
+
+  public experienceLevel: string = "";
+
+  public message: string = "";
+
+  public dogs: MembershipDog[] = [];
+}
+
+class MembershipDog {
+
+  public name: string = ""
+
+  public breed: string = "";
+
+  public dateOfBirth: string = "";
 }

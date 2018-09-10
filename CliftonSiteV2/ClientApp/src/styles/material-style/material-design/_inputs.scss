@@ -64,7 +64,7 @@
     .form-control {
       box-shadow: none;
     }
-    &.is-focused .form-control {
+    .form-control:focus {
       background-image: linear-gradient($color, $color), linear-gradient($mdb-input-underline-color, $mdb-input-underline-color);
     }
     label.control-label,
@@ -114,7 +114,7 @@
 
       // static, focused, or autofill floating labels
       &.label-static,
-      &.label-floating.is-focused,
+      &.label-floating:focus,
       &.label-floating:not(.is-empty) {
         @include label-static($label-top, $static-font-size, $static-line-height);
       }
@@ -214,7 +214,7 @@
   }
 
   // form-group is-focused display
-  &.is-focused {
+  &:focus-within {
     .form-control {
       outline: none;
       background-image: linear-gradient($brand-primary, $brand-primary), linear-gradient($mdb-input-underline-color, $mdb-input-underline-color);
@@ -281,19 +281,18 @@
 
 
 select.form-control {
-
   border: 0;
   box-shadow: none;
   border-radius: 0;
 
-  .form-group.is-focused & {
+  .form-group:focus-within & {
     box-shadow: none;
     border-color: $mdb-input-underline-color;
   }
 
   &[multiple] {
     &,
-    .form-group.is-focused & {
+    .form-group:focus-within & {
       height: 85px;
     }
   }

@@ -7,11 +7,13 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using CliftonSiteV2.Models;
 using CliftonSiteV2.Services.Email.Messages;
+using NLog;
 
 namespace CliftonSiteV2.Services.Email
 {
     public class MessageFactory
     {
+        private static ILogger logger = LogManager.GetLogger(nameof(MessageFactory));
         private readonly TemplateBuilder templateBuilder;
 
         public MessageFactory(TemplateBuilder templateBuilder)
@@ -24,19 +26,34 @@ namespace CliftonSiteV2.Services.Email
         {
             var clubAddress = this.GetClubAddress(messageModel.MessageType);
 
-            var messageContent = this.templateBuilder.BuildMessageAsync(messageModel.MessageType.ToString(), messageModel);
-            var confirmationContent = this.templateBuilder.BuildMessageAsync($"{messageModel.MessageType.ToString()}Confirmation", messageModel);
+            var messageToTheClub = this.BuildMessageAsync(messageModel.MessageType.ToString(), messageModel, messageModel.EmailAddress, clubAddress);
+            var messageToUser = this.BuildMessageAsync("Confirmation", messageModel, clubAddress, messageModel.EmailAddress);
 
-            await Task.WhenAll(messageContent, confirmationContent);
-
-            var messageToTheClub = this.CreateMessage(messageModel.EmailAddress, clubAddress, $"{messageModel.MessageType} Request from the Website", messageContent.Result);
-            var messageToUser = this.CreateMessage(clubAddress, messageModel.EmailAddress, $"{messageModel.MessageType} Request from the Clifton Agility Club", messageContent.Result);
+            await Task.WhenAll(messageToTheClub, messageToUser);
 
             return new List<MailMessage>
             {
-                messageToTheClub,
-                messageToUser
+                messageToTheClub.Result,
+                messageToUser.Result
             };
+        }
+
+        private async Task<MailMessage> BuildMessageAsync<T>(string messageType, T messageModel, string fromAddress, string toAddress)
+            where T : IEmailModel
+        {
+            try
+            {
+                var messageContent = await this.templateBuilder.BuildMessageAsync(messageType, messageModel);
+
+                var message = this.CreateMessage(fromAddress, toAddress, $"{messageModel.MessageType} Request from the Website", messageContent);
+
+                return message;
+            }
+            catch (Exception ex)
+            {
+                logger.Log(LogLevel.Error, ex, "Failed creating message. Message: {0}", messageType);
+                throw ex;
+            }
         }
 
         private MailMessage CreateMessage(string from, string to, string subject, MessageContent content)

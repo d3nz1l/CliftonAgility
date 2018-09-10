@@ -3,7 +3,7 @@
 /// Angular imports
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -11,7 +11,9 @@ import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { DeviceDetectorModule } from 'ngx-device-detector';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 /// Component imports
 import { AppComponent } from './app.component';
@@ -21,6 +23,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 // Providor imports
 import { ColorHelper } from './helpers/color-helper.component';
+import { RippleComponent } from './helpers/ripples.component';
+import { Validation } from './validators/validation-helper.provider';
 
 // Layout components
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
@@ -35,12 +39,16 @@ import { ClubClothingComponent } from './club-clothing/club-clothing.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { MembershipComponent } from './membership/membership.component';
 
+/// Directives
+import { CustomMinDirective } from './validators/min-validator.directive';
+
 @NgModule({
   declarations: [
     AboutUsComponent,
     AppComponent,
     ClubClothingComponent,
     ContactUsComponent,
+    CustomMinDirective,
     DownloadsComponent,
     FooterComponent,
     HeaderComponent,
@@ -48,6 +56,7 @@ import { MembershipComponent } from './membership/membership.component';
     MembershipComponent,
     NavMenuComponent,
     OurVenueComponent,
+    RippleComponent,
     DefaultLayoutComponent,
     FullScreenLayoutComponent
   ],
@@ -55,7 +64,11 @@ import { MembershipComponent } from './membership/membership.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgSelectModule,
+    DeviceDetectorModule.forRoot(),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0O1HVq24zqR_7c2CbDESfMJZ79Se9GLQ'
     }),
@@ -86,7 +99,12 @@ import { MembershipComponent } from './membership/membership.component';
       })
   ],
   providers: [
-    ColorHelper
+    ColorHelper,
+    Validation,
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { siteKey: '6LdjzA4TAAAAAEHRViqv4q4daAAW-y83JdYekxfS' }
+    }
   ],
   bootstrap: [AppComponent]
 })

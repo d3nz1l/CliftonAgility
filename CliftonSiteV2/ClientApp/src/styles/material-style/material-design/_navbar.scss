@@ -10,6 +10,7 @@
     height: 60px;
     line-height: 30px;
     color: inherit;
+
     &:hover,
     &:focus {
       color: inherit;
@@ -35,6 +36,7 @@
         background-color: transparent;
       }
     }
+
     > .active > a {
       &,
       &:hover,
@@ -43,6 +45,7 @@
         background-color: rgba(255, 255, 255, 0.1);
       }
     }
+
     > .disabled > a {
       &,
       &:hover,
@@ -53,14 +56,15 @@
       }
     }
   }
-
   // Darken the responsive nav toggle
   .navbar-toggle {
     border: 0;
+
     &:hover,
     &:focus {
       background-color: transparent;
     }
+
     .icon-bar {
       background-color: inherit;
       border: 1px solid;
@@ -76,7 +80,6 @@
   .navbar-form {
     border-color: rgba(0,0,0,0.1);
   }
-
   // Dropdowns
   .navbar-nav {
     > .open > a {
@@ -94,45 +97,52 @@
         margin-top: 15px;
         margin-bottom: 15px;
       }
-
       // Dropdowns get custom display
-      .dropdown{
-        .dropdown-toggle{
-          .caret{
-            display:none;
+      .dropdown {
+        .dropdown-toggle {
+          .caret {
+            display: none;
           }
-          &:after{
+
+          &:after {
             content: 'keyboard_arrow_right';
             font-family: 'Material Icons';
             font-size: 1.5em;
-            float:right;
+            float: right;
           }
         }
-        .dropdown-menu{
-          margin-left:20px;
+
+        .dropdown-menu {
+          margin-left: 20px;
         }
-        &.open{
-          .dropdown-toggle:after{
+
+        &.open {
+          .dropdown-toggle:after {
             content: 'keyboard_arrow_down';
           }
+
           .dropdown-menu {
             > .dropdown-header {
               border: 0;
               color: inherit;
             }
+
             .divider {
               border-bottom: 1px solid;
               opacity: 0.08;
             }
+
             > li > a {
               color: inherit;
               font-size: inherit;
+
               &:hover,
               &:focus {
                 color: inherit;
                 background-color: transparent;
               }
             }
+
             > .active > a {
               &,
               &:hover,
@@ -141,6 +151,7 @@
                 background-color: transparent;
               }
             }
+
             > .disabled > a {
               &,
               &:hover,
@@ -157,6 +168,7 @@
 
   .navbar-link {
     color: inherit;
+
     &:hover {
       color: inherit;
     }
@@ -164,10 +176,12 @@
 
   .btn-link {
     color: inherit;
+
     &:hover,
     &:focus {
       color: inherit;
     }
+
     &[disabled],
     fieldset[disabled] & {
       &:hover,
@@ -179,12 +193,13 @@
 
   .navbar-form {
     margin-top: 16px;
+
     .form-group {
       margin: 0;
       padding: 0;
 
       .material-input:before,
-      &.is-focused .material-input:after {
+      &:focus-within .material-input:after {
         background-color: inherit;
       }
     }
@@ -195,19 +210,17 @@
       color: inherit;
       padding: 0;
       margin: 0;
-
       // re-normalize inputs in a navbar the size of standard bootstrap since our normal inputs are larger by spec than bootstrap
       //---
       //height: $mdb-input-height-base;
       $bs-line-height-base: 1.428571429 !default;
-      $bs-line-height-computed:    floor(($font-size-base * $bs-line-height-base)) !default; // ~20px
+      $bs-line-height-computed: floor(($font-size-base * $bs-line-height-base)) !default; // ~20px
       height: ($bs-line-height-computed + 8px);
       font-size: $font-size-base;
       line-height: $bs-line-height-base;
       //---
     }
   }
-
   // SASS conversion note: please mirror any content change in _mixins-shared.scss navbar-variations-content
   @include navbar-variations(unquote(".navbar"), unquote(""), $brand-primary);
 
@@ -222,6 +235,7 @@
       height: 50px;
       padding: 10px 15px;
     }
+
     .navbar-form {
       margin-top: 10px;
     }

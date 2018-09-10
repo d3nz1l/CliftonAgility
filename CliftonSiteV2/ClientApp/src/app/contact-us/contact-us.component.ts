@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Validation } from '../validators/validation-helper.provider';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,37 +15,54 @@ export class ContactUsComponent {
   private baseUrl: string;
   public sending: boolean = false;
   public messageSent: boolean = false;
+  public validation: Validation;
+
+  public form: FormGroup;
+
 
   public questionTypes = [
-    { value: "", label: "Select a question category..." },
+    { value: "0", label: "Select a question category..." },
     { value: "1", label: "Request Information" },
     { value: "2", label: "Membership Enquiry" },
     { value: "3", label: "Send us a comment" },
-    { value: "4", label: "Sell us something/Make us an offer" },
-    { value: "5", label: "Any Other Question" },
+    { value: "4", label: "Any Other Question" },
   ];
 
-  public model: ContactUsModel = new ContactUsModel();
-
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title, formBuilder: FormBuilder, validation: Validation) {
 
     this.http = http;
     this.baseUrl = baseUrl;
+    this.validation = validation;
 
     title.setTitle("Contact Us - Clifton AC");
+
+    this.form = formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      emailAddress: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      questionType: ['Select a question category...', [Validators.required]],
+      message: ['', [Validators.required]],
+      recaptcha: [null, Validators.required]
+    });
   }
 
-  public sendMessage(form: NgForm) {
+  public sendMessage() {
 
-    if (!form.valid) {
+    if (!this.form.valid) {
 
       return;
     }
 
     this.sending = true;
 
+    var options = {
+      headers: new HttpHeaders({
+        'recaptcha-response': this.form.get('recaptcha').value
+      })
+    };
+
     this.http
-      .post(this.baseUrl + "api/message/email", this.model)
+      .post(this.baseUrl + "api/message/email", this.buildModelFromForm(), options)
       .subscribe(
         result => {
 
@@ -57,6 +75,18 @@ export class ContactUsComponent {
           this.messageSent = false;
         });
   }
+
+  private buildModelFromForm(): ContactUsModel {
+
+    var model = new ContactUsModel();
+    model.name = this.form.get('name').value;
+    model.emailAddress = this.form.get('emailAddress').value;
+    model.phoneNumber = this.form.get('phoneNumber').value;
+    model.questionType = this.form.get('questionType').value;
+    model.text = this.form.get('message').value;
+
+    return model;
+  }
 }
 
 class ContactUsModel {
@@ -67,15 +97,17 @@ class ContactUsModel {
 
   public phoneNumber: string = "";
 
-  public questionType: string = "";
+  public questionType: QuestionType = 0;
 
-  public message: string = "";
+  public text: string = "";
+
+  public recaptchaResponse: string = "";
 }
 
 enum QuestionType {
-  RequestInfo = 1,
+  Undefined,
+  RequestInfo,
   Membership,
   Comment,
-  SellToUs,
   Other
 }

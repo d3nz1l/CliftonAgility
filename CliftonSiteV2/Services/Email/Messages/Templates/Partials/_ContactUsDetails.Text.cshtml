@@ -1,0 +1,11 @@
+﻿@using RazorLight
+@using System.Text.RegularExpressions
+@using CliftonSiteV2.Models
+@inherits TemplatePage<EmailMessage>
+
+
+    Name: @Model.Name</td>
+    Email Address: @Model.EmailAddress
+    Phone Number: @Model.PhoneNumber
+    Question: @(Regex.Replace(Model.MessageType.ToString(), "([A-Z])", " $1"))
+    Message: @Model.Text
