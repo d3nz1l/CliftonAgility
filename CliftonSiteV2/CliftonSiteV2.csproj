@@ -38,10 +38,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Services\Email\Messages\Templates\Comment.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Comment.Text.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Confirmation.Html.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Confirmation.Text.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Information.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Information.Text.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Membership.Html.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Membership.Text.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Other.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Other.Text.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Text.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\_Layout.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\_ViewStart.cshtml" />
   </ItemGroup>
@@ -55,8 +63,24 @@
     <EmbeddedResource Include="Services\Email\Messages\Templates\Confirmation.Text.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </EmbeddedResource>
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Comment.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Comment.Text.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Other.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Other.Text.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Information.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Information.Text.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
     <EmbeddedResource Include="Services\Email\Messages\Templates\Membership.Html.cshtml" />
     <EmbeddedResource Include="Services\Email\Messages\Templates\Membership.Text.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Text.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Email\Messages\Templates\_Layout.cshtml" />
@@ -66,9 +90,6 @@
   <ItemGroup>
     <Content Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Text.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>
 

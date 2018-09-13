@@ -31,11 +31,11 @@ namespace CliftonSiteV2.Services.Email
                 {
                     try
                     {
-                        await client.SendMailAsync(email);
+                        /////await client.SendMailAsync(email);
                     }
                     catch (Exception ex)
                     {
-                        this.logger.LogError(ex, "Failerd sending email", message.MessageType);
+                        this.logger.LogError(ex, "Failed sending email. Type; {0}, Error: {1}", message.MessageType, ex.Message);
                     }
                 }
             }

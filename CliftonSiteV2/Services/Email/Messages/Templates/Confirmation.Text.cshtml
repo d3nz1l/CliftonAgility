@@ -1,1 +1,11 @@
-﻿Text email
+﻿@using RazorLight
+@using CliftonSiteV2.Models
+@inherits TemplatePage<EmailMessage>
+
+    Thank you for contacting Clifton Agility Club
+
+    This is an automated message to confirm your message has been received by the club.
+
+    A copy of the information you provided is shown below. If anything looks wrong, please let us know.
+
+    @{ await IncludeAsync("Messages.Templates.Partials._ContactUsDetails.Text.cshtml", Model); }

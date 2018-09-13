@@ -14,9 +14,10 @@ export class ContactUsComponent {
   private http: HttpClient;
   private baseUrl: string;
   public sending: boolean = false;
-  public messageSent: boolean = false;
+  public messageStatus: MessageStatus = MessageStatus.ShowForm;
   public validation: Validation;
 
+  public messageStatusEnum = MessageStatus;
   public form: FormGroup;
 
 
@@ -46,6 +47,21 @@ export class ContactUsComponent {
     });
   }
 
+  public resetForm(clearForm: boolean) {
+
+    this.messageStatus = MessageStatus.ShowForm;
+
+    this.form.get('recaptcha').setValue('');
+
+    if (clearForm) {
+      this.form.get('name').setValue('');
+      this.form.get('emailAddress').setValue('');
+      this.form.get('phoneNumber').setValue('');
+      this.form.get('questionType').setValue('Select a question category...');
+      this.form.get('message').setValue('');
+    }
+  }
+
   public sendMessage() {
 
     if (!this.form.valid) {
@@ -62,17 +78,19 @@ export class ContactUsComponent {
     };
 
     this.http
-      .post(this.baseUrl + "api/message/email", this.buildModelFromForm(), options)
+      .post("/api/message/email", this.buildModelFromForm(), options)
       .subscribe(
         result => {
 
+          console.log(result);
           this.sending = false;
-          this.messageSent = true;
+          this.messageStatus = MessageStatus.MessageSent;
         },
         error => {
 
+          console.log(error);
           this.sending = false;
-          this.messageSent = false;
+          this.messageStatus = MessageStatus.MessageFailed;
         });
   }
 
@@ -82,7 +100,7 @@ export class ContactUsComponent {
     model.name = this.form.get('name').value;
     model.emailAddress = this.form.get('emailAddress').value;
     model.phoneNumber = this.form.get('phoneNumber').value;
-    model.questionType = this.form.get('questionType').value;
+    model.messageType = this.form.get('questionType').value.value;
     model.text = this.form.get('message').value;
 
     return model;
@@ -97,17 +115,21 @@ class ContactUsModel {
 
   public phoneNumber: string = "";
 
-  public questionType: QuestionType = 0;
+  public messageType: QuestionType = 0;
 
   public text: string = "";
-
-  public recaptchaResponse: string = "";
 }
 
-enum QuestionType {
+export enum QuestionType {
   Undefined,
   RequestInfo,
   Membership,
   Comment,
   Other
+}
+
+export enum MessageStatus {
+  ShowForm,
+  MessageSent,
+  MessageFailed
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CliftonSiteV2.Services.Recaptcha
 {
@@ -13,6 +14,7 @@ namespace CliftonSiteV2.Services.Recaptcha
 
         public string hostname { get; set; }
 
+        [JsonProperty(PropertyName = "error-codes")]
         public string[] errorcodes { get; set; }
     }
 }

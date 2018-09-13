@@ -4,25 +4,25 @@
 @inherits TemplatePage<EmailMessage>
 
 <table>
-    <tr>
+    <tr style="padding-bottom: 5px;">
         <td align="right">Name:</td>
-        <td align="left">@Model.Name</td>
+        <td align="left" style="padding-left: 30px;">@Model.Name</td>
     </tr>
     <tr>
         <td align="right">Email Address:</td>
-        <td align="left">@Model.EmailAddress</td>
+        <td align="left" style="padding-left: 30px;">@Model.EmailAddress</td>
     </tr>
     <tr>
         <td align="right">Phone Number:</td>
-        <td align="left">@Model.PhoneNumber</td>
+        <td align="left" style="padding-left: 30px;">@Model.PhoneNumber</td>
     </tr>
     <tr>
         <td align="right">Question:</td>
-        <td align="left">@(Regex.Replace(Model.MessageType.ToString(), "([A-Z])", " $1"))</td>
+        <td align="left" style="padding-left: 30px;">@(Regex.Replace(Model.MessageType.ToString(), "([A-Z])", " $1"))</td>
     </tr>
     <tr>
         <td align="right">Message:</td>
-        <td align="left">@Model.Text</td>
+        <td align="left" style="padding-left: 30px;">@Model.Text</td>
     </tr>
 
 </table>

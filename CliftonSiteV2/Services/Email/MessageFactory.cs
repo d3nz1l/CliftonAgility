@@ -66,7 +66,7 @@ namespace CliftonSiteV2.Services.Email
             };
 
             message.To.Add(to);
-            message.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(content.TextContent, new ContentType("text/html")));
+            message.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(content.HtmlContent, new ContentType("text/html")));
 
             return message;
         }

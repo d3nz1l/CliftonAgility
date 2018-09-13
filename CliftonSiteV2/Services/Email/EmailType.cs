@@ -7,11 +7,10 @@ namespace CliftonSiteV2.Services.Email
 {
     public enum EmailType
     {
-        Confirmation,
+        Undefined,
         Information,
         Membership,
         Comment,
-        SellToUs,
         Other
     }
 }

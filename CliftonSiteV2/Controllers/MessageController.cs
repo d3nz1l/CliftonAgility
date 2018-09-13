@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CliftonSiteV2.Models;
 using CliftonSiteV2.Services.Email;
 using CliftonSiteV2.Services.Recaptcha;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 
 namespace CliftonSiteV2.Controllers
 {
@@ -11,6 +13,7 @@ namespace CliftonSiteV2.Controllers
     [ValidateRecaptcha]
     public class MessageController : ControllerBase
     {
+        private static ILogger logger = LogManager.GetLogger(nameof(MessageController));
         private readonly EmailService emailService;
 
         public MessageController(EmailService emailService)
@@ -22,14 +25,24 @@ namespace CliftonSiteV2.Controllers
         [HttpPost]
         public async Task<IActionResult> Email(EmailMessage message)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return this.BadRequest();
+                if (!this.ModelState.IsValid)
+                {
+                    return this.BadRequest(this.ModelState);
+                }
+
+                await this.emailService.Send(message);
+
+                return this.Ok();
             }
+            catch (Exception ex)
+            {
+                logger.Error(ex, ex.Message);
+                this.ModelState.AddModelError("Send Error", "Message sending failed with an error.");
 
-            await this.emailService.Send(message);
-
-            return this.Ok();
+                return this.BadRequest(this.ModelState);
+            }
         }
     }
 }

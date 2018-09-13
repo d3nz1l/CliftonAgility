@@ -1,64 +1,469 @@
 @import 'variables/material-colors';
 
 .ms-preload {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #eee;
-    z-index: 50000;
-    height: 100%;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #eee;
+  z-index: 50000;
+  height: 100%;
+  width: 100%;
 }
 
 .spinner {
   //margin: 100px auto;
-  width: 60px;
-  height: 60px;
+  width: 350px;
+  height: 350px;
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  text-align: center;
-
-  -webkit-animation: sk-rotate 2.0s infinite linear;
-  animation: sk-rotate 2.0s infinite linear;
-}
-
-.dot1, .dot2 {
-  width: 60%;
-  height: 60%;
-  display: inline-block;
-  position: absolute;
   top: 0;
-  background-color: $mdc-blue-grey-500;
-  border-radius: 100%;
-
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
-}
-
-.dot2 {
-  top: auto;
+  left: 0;
   bottom: 0;
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+  right: 0;
+  text-align: center;
 }
 
-@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
-
-@-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+path, ellipse, circle, rect, polygon, polyline, line {
+  stroke-width: 0;
 }
 
-@keyframes sk-bounce {
-  0%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 50% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
+@keyframes ld-bounce-px {
+  0%, 90% {
+    animation-timing-function: linear;
   }
+
+  10% {
+    animation-timing-function: cubic-bezier(0, 0.4, 0.6, 1);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 0.6);
+  }
+
+  0% {
+    -webkit-transform: translate(0, 30px) scaleY(0.5);
+    transform: translate(0, 30px) scaleY(0.5);
+  }
+
+  10% {
+    -webkit-transform: translate(0, 5px) scaleY(1.1);
+    transform: translate(0, 5px) scaleY(1.1);
+  }
+
+  50% {
+    -webkit-transform: translate(0, -37px) scaleY(1.1);
+    transform: translate(0, -37px) scaleY(1.1);
+  }
+
+  90% {
+    -webkit-transform: translate(0, 5px) scaleY(1.1);
+    transform: translate(0, 5px) scaleY(1.1);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 30px) scaleY(0.5);
+    transform: translate(0, 30px) scaleY(0.5);
+  }
+}
+
+@-webkit-keyframes ld-bounce-px {
+  0%, 90% {
+    animation-timing-function: linear;
+  }
+
+  10% {
+    animation-timing-function: cubic-bezier(0, 0.4, 0.6, 1);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 0.6);
+  }
+
+  0% {
+    -webkit-transform: translate(0, 30px) scaleY(0.5);
+    transform: translate(0, 30px) scaleY(0.5);
+  }
+
+  10% {
+    -webkit-transform: translate(0, 5px) scaleY(1.1);
+    transform: translate(0, 5px) scaleY(1.1);
+  }
+
+  50% {
+    -webkit-transform: translate(0, -37px) scaleY(1.1);
+    transform: translate(0, -37px) scaleY(1.1);
+  }
+
+  90% {
+    -webkit-transform: translate(0, 5px) scaleY(1.1);
+    transform: translate(0, 5px) scaleY(1.1);
+  }
+
+  100% {
+    -webkit-transform: translate(0, 30px) scaleY(0.5);
+    transform: translate(0, 30px) scaleY(0.5);
+  }
+}
+
+.ld.ld-bounce-px {
+  -webkit-animation: ld-bounce-px 1s infinite;
+  animation: ld-bounce-px 1s infinite;
+}
+
+.st0 {
+  fill: #333
+}
+
+.st1, .st2 {
+  stroke: #333
+}
+
+.st1 {
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  fill: #e0e0e0
+}
+
+.st2 {
+  fill: #f5e6c8
+}
+
+.st2, .st3, .st4 {
+  stroke-width: 3.5;
+  stroke-miterlimit: 10
+}
+
+.st3 {
+  fill: #e15b64;
+  stroke: #333
+}
+
+.st4 {
+  opacity: .1;
+  stroke: #000
+}
+
+.st5 {
+  fill: #fff
+}
+
+.st6 {
+  fill: #e0e0e0
+}
+
+.st7 {
+  fill: #e15b64
+}
+
+.st8 {
+  opacity: .1
+}
+
+.st10, .st9 {
+  stroke: #333;
+  stroke-miterlimit: 10
+}
+
+.st9 {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-width: 4.3153
+}
+
+.st10 {
+  fill: #e0e0e0;
+  stroke-width: 3.5
+}
+
+.st11 {
+  fill: #f5e169;
+  stroke: #333;
+  stroke-linecap: round
+}
+
+.st11, .st12, .st13 {
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
+
+.st12 {
+  stroke-linecap: round;
+  fill: #f5e6c8;
+  stroke: #333
+}
+
+.st13 {
+  fill: none;
+  stroke: #fff
+}
+
+.st13, .st14, .st15 {
+  stroke-linecap: round
+}
+
+.st14 {
+  opacity: .1;
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke: #000
+}
+
+.st15 {
+  fill: none;
+  stroke: #fff
+}
+
+.st15, .st16, .st17 {
+  stroke-width: 3.5;
+  stroke-miterlimit: 10
+}
+
+.st16 {
+  fill: none;
+  stroke: #333
+}
+
+.st17 {
+  opacity: .2;
+  stroke: #000;
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
+
+.st18, .st19, .st20, .st21 {
+  stroke: #333;
+  stroke-miterlimit: 10
+}
+
+.st18 {
+  stroke-linecap: round;
+  fill: #66503a;
+  stroke-width: 3.5
+}
+
+.st19, .st20, .st21 {
+  fill: #4a3827;
+  stroke-width: 3.56
+}
+
+.st20, .st21 {
+  fill: #66503a;
+  stroke-width: 3.5
+}
+
+.st21 {
+  fill: none;
+  stroke-linecap: round
+}
+
+.st22 {
+  fill: #66503a
+}
+
+.st23 {
+  fill: #a0c8d7;
+  stroke: #333;
+  stroke-width: 3.5;
+  stroke-miterlimit: 10
+}
+
+.st24, .st25 {
+  fill: none;
+  stroke: #333;
+  stroke-linecap: round
+}
+
+.st24 {
+  stroke-miterlimit: 10;
+  stroke-dasharray: 9.0554,9.0554;
+  stroke-width: 3.5
+}
+
+.st25 {
+  stroke-width: 7;
+  stroke-linejoin: round
+}
+
+.st25, .st26 {
+  stroke-miterlimit: 10
+}
+
+.st26, .st27, .st28 {
+  fill: none;
+  stroke: #333;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
+
+.st28 {
+  stroke-dasharray: 3.1078,6.2156
+}
+
+.st29 {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 6,4
+}
+
+.st29, .st30, .st31 {
+  stroke: #333;
+  stroke-width: 3.5
+}
+
+.st30 {
+  stroke-miterlimit: 10;
+  fill: #fff
+}
+
+.st31 {
+  fill: #f8b26a
+}
+
+.st31, .st32, .st33 {
+  stroke-miterlimit: 10
+}
+
+.st32 {
+  fill: #e15b64;
+  stroke: #333;
+  stroke-width: 3.0483
+}
+
+.st33 {
+  stroke-width: 3.048
+}
+
+.st33, .st34, .st35 {
+  opacity: .1;
+  stroke: #000
+}
+
+.st34 {
+  stroke-miterlimit: 10;
+  stroke-width: 2.983
+}
+
+.st35 {
+  stroke-width: 2.602
+}
+
+.st35, .st36, .st37, .st38, .st39, .st40, .st41, .st42, .st43 {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
+
+.st36 {
+  opacity: .2;
+  stroke: #000;
+  stroke-width: 2.602
+}
+
+.st37, .st38, .st39, .st40, .st41, .st42, .st43 {
+  fill: #e15b64;
+  stroke: #333;
+  stroke-width: 3.5
+}
+
+.st38, .st39, .st40, .st41, .st42, .st43 {
+  fill: #fff
+}
+
+.st39, .st40, .st41, .st42, .st43 {
+  fill: #f8b26a
+}
+
+.st40, .st41, .st42, .st43 {
+  fill: #f47e60
+}
+
+.st41, .st42, .st43 {
+  fill: #333;
+  stroke: #fff
+}
+
+.st42, .st43 {
+  fill: #666;
+  stroke: #333
+}
+
+.st43 {
+  fill: #a0c8d7
+}
+
+.st44 {
+  fill: #666
+}
+
+.st45, .st46 {
+  stroke: #000;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
+
+.st46 {
+  fill: #666;
+  stroke: #fff
+}
+
+.st47 {
+  fill: #e15b64;
+  stroke: #333;
+  stroke-width: 2
+}
+
+.st47, .st48, .st49, .st50 {
+  stroke-miterlimit: 10
+}
+
+.st48 {
+  opacity: .1;
+  stroke-linejoin: bevel;
+  stroke: #000;
+  stroke-width: 3.5
+}
+
+.st49, .st50 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round
+}
+
+.st50 {
+  fill: #c33737;
+  stroke: #333;
+  stroke-width: 3.5;
+  stroke-linejoin: round
+}
+
+.st51 {
+  fill: #abbd81
+}
+
+.st52, .st53, .st54 {
+  fill: url(#SVGID_1_);
+  stroke: #333;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10
+}
+
+.st53, .st54 {
+  fill: url(#SVGID_2_)
+}
+
+.st54 {
+  fill: url(#SVGID_3_)
 }

@@ -1,9 +1,8 @@
 ﻿@using RazorLight
 @using CliftonSiteV2.Models
 @inherits TemplatePage<EmailMessage>
+Information request from the website
 
-Membership question from the website
-
-We have received the following membership query from the website.
+We have received the following query from the website.
 
 @{ await IncludeAsync("Messages.Templates.Partials._ContactUsDetails.Text.cshtml", Model); }
