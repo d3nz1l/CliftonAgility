@@ -628,6 +628,17 @@ export class MembershipComponent {
     return (window.innerWidth < 385) ? 'compact' : 'normal';
   }
 
+  public resetForm(clearForm: boolean) {
+
+    this.messageStatus = FormStatus.ShowForm;
+
+    this.form.get('recaptcha').reset();
+
+    if (clearForm) {
+      this.form.reset();
+    }
+  }
+
   public sendMessage() {
 
     if (!this.form.valid) {

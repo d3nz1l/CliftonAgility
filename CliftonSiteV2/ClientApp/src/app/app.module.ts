@@ -21,6 +21,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CacNgbTabset } from './components/tabset.component';
+import { SideBarFindUsComponent } from './sidebar/find-us.component';
+import { SideBarMemberFormComponent } from './sidebar/member-form.component';
 
 // Providor imports
 import { ColorHelper } from './helpers/color-helper.component';
@@ -61,6 +63,8 @@ import { CustomMinDirective } from './validators/min-validator.directive';
     OurVenueComponent,
     PrivacyPolicyComponent,
     RippleComponent,
+    SideBarFindUsComponent,
+    SideBarMemberFormComponent,
     DefaultLayoutComponent,
     FullScreenLayoutComponent
   ],

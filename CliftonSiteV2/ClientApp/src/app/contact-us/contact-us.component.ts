@@ -49,7 +49,6 @@ export class ContactUsComponent {
     return (window.innerWidth < 385) ? 'compact' : 'normal';
   }
 
-
   public resetForm(clearForm: boolean) {
 
     this.messageStatus = MessageStatus.ShowForm;

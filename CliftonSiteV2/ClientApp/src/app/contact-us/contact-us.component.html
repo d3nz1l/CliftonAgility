@@ -147,41 +147,8 @@
       </div>
     </div>
     <div class="col-xl-4 col-lg-5">
-      <div class="card card-primary animated fadeInUp animation-delay-7">
-        <div class="card-header">
-          <h3 class="card-title">
-            <i class="zmdi zmdi-map"></i>Address
-          </h3>
-        </div>
-        <div class="card-body">
-          <h4>Looking for us?</h4>
-          <address class="no-mb">
-            <i class="color-danger zmdi zmdi-map"></i>
-            Chelvey Court Farm<br />
-            Chelvey Road<br />
-            Backwell<br />
-            Bristol<br />
-            BS48 4AA
-          </address>
-          <div class="text-center">
-            <a class="btn btn-lg btn-primary btn-raised" [routerLink]='["/our-venue"]'><i class="zmdi zmdi-pin-drop"></i>Find Us</a>
-          </div>
-        </div>
-      </div>
-      <div class="card card-primary animated fadeInUp animation-delay-7">
-        <div class="card-header">
-          <h3 class="card-title">
-            <i class="zmdi zmdi-accounts-add"></i>Membership Form
-          </h3>
-        </div>
-        <div class="card-body">
-          <p>Looking to join the club? Fill out the new members form and we'll be in touch.</p>
-          <p>The new members form can be found here...</p>
-          <div class="text-center">
-            <a class="btn btn-lg btn-primary btn-raised" [routerLink]='["/new-members-form"]'><i class="zmdi zmdi-account-add"></i>Membership Form</a>
-          </div>
-        </div>
-      </div>
+      <sidebar-find-us></sidebar-find-us>
+      <sidebar-member-form></sidebar-member-form>
     </div>
   </div>
 </div>
