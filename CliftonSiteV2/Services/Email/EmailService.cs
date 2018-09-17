@@ -21,7 +21,7 @@ namespace CliftonSiteV2.Services.Email
             this.logger = logger;
         }
 
-        public async Task Send(EmailMessage message)
+        public async Task Send(IEmailModel message)
         {
             using (var client = this.clientFactory.Build())
             {
@@ -31,7 +31,7 @@ namespace CliftonSiteV2.Services.Email
                 {
                     try
                     {
-                        /////await client.SendMailAsync(email);
+                        await client.SendMailAsync(email);
                     }
                     catch (Exception ex)
                     {

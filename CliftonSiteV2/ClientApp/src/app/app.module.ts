@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 
 /// Vender imports
 import { AgmCoreModule } from '@agm/core';
-import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { CacNgbTabset } from './components/tabset.component';
 
 // Providor imports
 import { ColorHelper } from './helpers/color-helper.component';
@@ -38,6 +39,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ClubClothingComponent } from './club-clothing/club-clothing.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { MembershipComponent } from './membership/membership.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 /// Directives
 import { CustomMinDirective } from './validators/min-validator.directive';
@@ -46,6 +48,7 @@ import { CustomMinDirective } from './validators/min-validator.directive';
   declarations: [
     AboutUsComponent,
     AppComponent,
+    CacNgbTabset,
     ClubClothingComponent,
     ContactUsComponent,
     CustomMinDirective,
@@ -56,6 +59,7 @@ import { CustomMinDirective } from './validators/min-validator.directive';
     MembershipComponent,
     NavMenuComponent,
     OurVenueComponent,
+    PrivacyPolicyComponent,
     RippleComponent,
     DefaultLayoutComponent,
     FullScreenLayoutComponent
@@ -83,7 +87,8 @@ import { CustomMinDirective } from './validators/min-validator.directive';
           { path: 'contact-us', component: ContactUsComponent },
           { path: 'club-clothing', component: ClubClothingComponent },
           { path: 'downloads', component: DownloadsComponent },
-          { path: 'membership', component: MembershipComponent }
+          { path: 'membership', component: MembershipComponent },
+          { path: 'privacy-policy', component: PrivacyPolicyComponent }
         ]
       },
       {

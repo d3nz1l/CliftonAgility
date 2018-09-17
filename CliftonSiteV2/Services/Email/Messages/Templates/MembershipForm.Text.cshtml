@@ -1,0 +1,16 @@
+﻿@using RazorLight
+@using CliftonSiteV2.Models
+@inherits TemplatePage<MembershipForm>
+    Thank you for contacting Clifton Agility Club
+
+    This is an automated message to confirm we have recieved your membership form.
+
+    A copy of the information you provided is shown below. If anything looks wrong, please let us know.
+
+    Your Name:  @Model.Name
+    Phone Number:   @Model.PhoneNumber
+    Email Address:  @Model.EmailAddress
+    Your Dogs Name: @Model.DogName
+    Your Dogs Breed: @Model.Breed
+    Your Dogs DOB: @Model.DogDateOfBirth
+    Message: @Model.Message

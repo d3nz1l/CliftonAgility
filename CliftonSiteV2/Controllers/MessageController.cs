@@ -44,5 +44,29 @@ namespace CliftonSiteV2.Controllers
                 return this.BadRequest(this.ModelState);
             }
         }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<IActionResult> MemberForm(MembershipForm membersForm)
+        {
+            try
+            {
+                if (!this.ModelState.IsValid)
+                {
+                    return this.BadRequest(this.ModelState);
+                }
+
+                await this.emailService.Send(membersForm);
+
+                return this.Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, ex.Message);
+                this.ModelState.AddModelError("Send Error", "Message sending failed with an error.");
+
+                return this.BadRequest(this.ModelState);
+            }
+        }
     }
 }

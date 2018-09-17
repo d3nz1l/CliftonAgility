@@ -180,6 +180,11 @@
 }
 
 @media (min-width: 768px) {
+  .container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
     .ms-paper-menu-title {
         a {
             i {

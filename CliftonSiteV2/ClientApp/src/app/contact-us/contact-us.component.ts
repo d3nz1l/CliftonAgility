@@ -12,7 +12,6 @@ import { Validation } from '../validators/validation-helper.provider';
 export class ContactUsComponent {
 
   private http: HttpClient;
-  private baseUrl: string;
   public sending: boolean = false;
   public messageStatus: MessageStatus = MessageStatus.ShowForm;
   public validation: Validation;
@@ -29,10 +28,9 @@ export class ContactUsComponent {
     { value: "4", label: "Any Other Question" },
   ];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, title: Title, formBuilder: FormBuilder, validation: Validation) {
+  constructor(http: HttpClient, title: Title, formBuilder: FormBuilder, validation: Validation) {
 
     this.http = http;
-    this.baseUrl = baseUrl;
     this.validation = validation;
 
     title.setTitle("Contact Us - Clifton AC");
@@ -46,6 +44,11 @@ export class ContactUsComponent {
       recaptcha: [null, Validators.required]
     });
   }
+
+  get recaptchaSize(): 'normal' | 'compact' {
+    return (window.innerWidth < 385) ? 'compact' : 'normal';
+  }
+
 
   public resetForm(clearForm: boolean) {
 
@@ -128,7 +131,7 @@ export enum QuestionType {
   Other
 }
 
-export enum MessageStatus {
+enum MessageStatus {
   ShowForm,
   MessageSent,
   MessageFailed

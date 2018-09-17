@@ -11,6 +11,7 @@ namespace CliftonSiteV2.Services.Email
         Information,
         Membership,
         Comment,
-        Other
+        Other,
+        MembershipForm
     }
 }
