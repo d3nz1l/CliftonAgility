@@ -84,8 +84,9 @@
               <!-- Dog DOB -->
               <div class="form-group row" [ngClass]="{ 'val-invalid': validation.hasError(form, ['dogDateOfBirth'], null) }">
                 <label [for]="inputDogDOB" autocomplete="false" class="col-lg-3 control-label">Dogs Date of Birth:</label>
-                <div class="input-group col-lg-9">
-                  <input class="form-control" placeholder="dd/mm/yyyy" [id]="inputDogDOB" formControlName="dogDateOfBirth" ngbDatepicker #dob="ngbDatepicker" />
+                <div class="input-group col-lg-9 theme-dark-blue">
+                  <!--<input class="form-control" placeholder="dd/mm/yyyy" [id]="inputDogDOB" formControlName="dogDateOfBirth" ngbDatepicker #dob="ngbDatepicker" />-->
+                  <input class="form-control" placeholder="dd/mm/yyyy" [id]="inputDogDOB" formControlName="dogDateOfBirth" bsDatepicker #dob="bsDatepicker" />
                   <div class="input-group-append">
                     <button class="btn-circle btn-circle-primary" (click)="dob.toggle()" type="button">
                       <i class="zmdi zmdi-calendar"></i>
@@ -186,7 +187,7 @@
     </div>
     <div class="col-xl-4 col-lg-5">
       <sidebar-find-us></sidebar-find-us>
-      <sidebar-member-form></sidebar-member-form>
+      <sidebar-help></sidebar-help>
     </div>
   </div>
 </div>

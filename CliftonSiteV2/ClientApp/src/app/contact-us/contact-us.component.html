@@ -12,7 +12,7 @@
 </div>
 <div class="container mt-minus-10">
   <div class="row">
-    <div class="col-xl-8 col-lg-7 col-sm-12">
+    <div class="col-xl-8 col-lg-7">
       <div *ngIf="messageStatus == messageStatusEnum.ShowForm" class="card card-primary animated fadeInUp animation-delay-7">
         <div class="card-body">
           <form class="form-horizontal" novalidate (ngSubmit)="sendMessage()" [formGroup]="form">
@@ -148,6 +148,7 @@
     </div>
     <div class="col-xl-4 col-lg-5">
       <sidebar-find-us></sidebar-find-us>
+      <sidebar-help></sidebar-help>
       <sidebar-member-form></sidebar-member-form>
     </div>
   </div>

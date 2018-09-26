@@ -617,7 +617,7 @@ export class MembershipComponent {
       emailAddress: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required]],
       dogName: ['', [Validators.required, Validators.minLength(2)]],
-      breed: ['', [Validators.required]],
+      breed: ['Start typing your breed....', [Validators.required]],
       dogDateOfBirth: ['', [Validators.required]],
       message: [''],
       recaptcha: [null, Validators.required]
@@ -660,12 +660,12 @@ export class MembershipComponent {
         result => {
 
           this.sending = false;
-          this.messageSent = true;
+          this.messageStatus = FormStatus.MessageSent;
         },
         error => {
 
           this.sending = false;
-          this.messageSent = false;
+          this.messageStatus = FormStatus.MessageFailed;
         });
   }
 }

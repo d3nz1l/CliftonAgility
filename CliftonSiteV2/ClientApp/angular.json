@@ -22,10 +22,10 @@
             ],
             "styles": [
               "src/styles/fonts.scss",
-              "src/styles/material-style/preload.scss",
               "node_modules/animate.css/animate.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -117,6 +117,7 @@
               "node_modules/plyr/dist/plyr.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles/material-style.scss",
               "src/styles.scss"
             ],

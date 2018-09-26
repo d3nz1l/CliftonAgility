@@ -3,7 +3,7 @@
 @inherits TemplatePage<EmailMessage>
 
 @{
-    this.Layout = "Messages.Templates._Layout.cshtml";
+    this.Layout = "Services.Email.Messages.Templates._Layout.cshtml";
     this.ViewBag.Title = "Website Information Request";
 }
 
@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td>
-            @{ await IncludeAsync("Messages.Templates.Partials._ContactUsDetails.Html.cshtml", Model); }
+            @{ await IncludeAsync($"Services.Email.Messages.Templates.Partials._{Model.GetType().Name}Details.Html.cshtml", Model); }
         </td>
     </tr>
 </table>

@@ -5,6 +5,7 @@
     border: 0;
     border-radius: 0px;
     margin-top: 5px;
+    margin-bottom: 0;
 
     .card-block, .card-body {
       border-top: solid 1px $color-medium-light;
@@ -17,7 +18,19 @@
 
       &:not(.show) {
         display: block !important;
-        height: 0;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+    }
+
+    .panel-collapse {
+      overflow: hidden;
+      transition: all ease-out 0.5s;
+
+      &:not(.show) {
+        display: block !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
       }
     }
 
@@ -25,7 +38,7 @@
       padding: 0;
       border-radius: 0px;
 
-      .card-title {
+      .card-title, panel-title {
         a {
           display: block;
           color: $color-dark;
@@ -74,7 +87,7 @@
         &.ms-rotate-icon {
           a.collapsed {
             i {
-              transform: rotate(180deg);
+              transform: rotate(360deg);
             }
           }
         }

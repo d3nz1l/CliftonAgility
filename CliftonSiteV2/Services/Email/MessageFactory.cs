@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using CliftonSiteV2.Models;
 using CliftonSiteV2.Services.Email.Messages;
 using NLog;
 
@@ -22,7 +19,7 @@ namespace CliftonSiteV2.Services.Email
         }
 
         public async Task<IEnumerable<MailMessage>> BuildMessagesAsync<T>(T messageModel)
-            where T : IEmailModel
+            where T : EmailModel
         {
             var clubAddress = this.GetClubAddress(messageModel.MessageType);
 
@@ -39,7 +36,7 @@ namespace CliftonSiteV2.Services.Email
         }
 
         private async Task<MailMessage> BuildMessageAsync<T>(string messageType, T messageModel, string fromAddress, string toAddress)
-            where T : IEmailModel
+            where T : EmailModel
         {
             try
             {
@@ -76,6 +73,7 @@ namespace CliftonSiteV2.Services.Email
             switch (emailType)
             {
                 case EmailType.Membership:
+                case EmailType.MembershipForm:
 
                     return EmailAddresses.Membership;
 

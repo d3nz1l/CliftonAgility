@@ -1,0 +1,11 @@
+﻿@using RazorLight
+@using CliftonSiteV2.Models
+@inherits TemplatePage<MembershipForm>
+
+    Name:           @Model.Name
+    Email Address:  @Model.EmailAddress
+    Phone Number:   @Model.PhoneNumber
+    Dogs Name:      @Model.DogName
+    Dogs Breed:     @Model.Breed
+    Dogs DOB:       @Model.DogDateOfBirth.ToLongDateString()
+    Message:        @Model.Message

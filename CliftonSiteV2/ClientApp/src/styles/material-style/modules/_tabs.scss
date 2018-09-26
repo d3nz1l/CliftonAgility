@@ -160,7 +160,7 @@
 .nav-tabs-ver-container {
     border-radius: 0 !important;
 
-    .nav-tabs-ver {
+    .nav-tabs-ver, .nav-stacked {
         background-color: $color-light;
         display: flex;
         flex-direction: column;
@@ -229,7 +229,7 @@
             }
         }
 
-        .nav-tabs-ver {
+        .nav-tabs-ver, nav-stacked {
             display: flex;
             //@include shadow-3dp;
             position: relative;

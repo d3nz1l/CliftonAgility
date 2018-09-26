@@ -1,0 +1,13 @@
+
+.ms-collapse {
+
+  .panel {
+    margin-bottom: 0 !important;
+  }
+
+  &.help-collapse {
+    .panel-collapse {
+      max-height: 200px;
+    }
+  }
+}

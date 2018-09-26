@@ -21,7 +21,7 @@ namespace CliftonSiteV2.Services.Email
             this.logger = logger;
         }
 
-        public async Task Send(IEmailModel message)
+        public async Task Send(EmailModel message)
         {
             using (var client = this.clientFactory.Build())
             {

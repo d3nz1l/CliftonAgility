@@ -18,12 +18,12 @@
             Home
           </a>
         </li>
-        <li class="nav-item dropdown" ngbDropdown [routerLinkActive]='["active"]'>
-          <a class="nav-link dropdown-toggle animated fadeIn animation-delay-7" ngbDropdownToggle id="nav-about" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="page">
+        <li class="nav-item dropdown" dropdown [routerLinkActive]='["active"]'>
+          <a class="nav-link dropdown-toggle animated fadeIn animation-delay-7" dropdownToggle id="nav-about" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="page">
             About us
             <i class="zmdi zmdi-chevron-down"></i>
           </a>
-          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="nav-about">
+          <ul class="dropdown-menu" *dropdownMenu aria-labelledby="nav-about">
             <li>
               <a [routerLink]='["/about-us"]' [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }' class="dropdown-item">The Club</a>
             </li>
@@ -45,14 +45,17 @@
             Contact Us
           </a>
         </li>
-        <li class="nav-item dropdown" ngbDropdown [routerLinkActive]='["active"]'>
-          <a class="nav-link dropdown-toggle animated fadeIn animation-delay-7" ngbDropdownToggle id="nav-member" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="page">
+        <li class="nav-item dropdown" dropdown [routerLinkActive]='["active"]'>
+          <a class="nav-link dropdown-toggle animated fadeIn animation-delay-7" dropdownToggle id="nav-member" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="page">
             Membership
             <i class="zmdi zmdi-chevron-down"></i>
           </a>
-          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="nav-member">
+          <ul class="dropdown-menu" *dropdownMenu aria-labelledby="nav-member">
             <li>
               <a [routerLink]='["/membership"]' [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }' class="dropdown-item">Join Us/New Members</a>
+            </li>
+            <li>
+              <a [routerLink]='["/help-advice"]' [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }' class="dropdown-item">Help &amp; Advice</a>
             </li>
             <li>
               <a [routerLink]='["/club-clothing"]' [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }' class="dropdown-item">Club Clothing</a>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CliftonSiteV2.Services.Email.Messages;
 using RazorLight;
-using RazorLight.Extensions;
 
 namespace CliftonSiteV2.Services.Email
 {
@@ -39,7 +34,7 @@ namespace CliftonSiteV2.Services.Email
 
         private string GetFullTemplateName(string templateName, TemplateType templateType)
         {
-            return $"Messages.Templates.{templateName}.{templateType}.cshtml";
+            return $"Services.Email.Messages.Templates.{templateName}.{templateType}.cshtml";
         }
 
         private enum TemplateType

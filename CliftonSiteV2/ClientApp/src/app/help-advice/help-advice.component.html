@@ -1,0 +1,36 @@
+<div class="ms-hero-page-override ms-hero-bgimg ms-hero-bgimg-jumps ms-hero-bg-primary">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Help &amp; Advice</h1>
+      <p class="lead lead-lg color-light text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">
+        Answers to some of the common questions about training and competing.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container mt-minus-10">
+  <div class="row">
+    <div class="col-xl-8 col-lg-7">
+      <div class="card card-default animated fadeInUp animation-delay-7">
+        <div class="card-body">
+          <h3>Training with us</h3>
+          <p>Things that are worth knowing before you train with us.</p>
+          <accordion class="ms-collapse help-collapse" closeOthers="true">
+            <accordion-group *ngFor="let item of trainingHelp; index as i" panelClass="" (isOpenChange)="openTabs[i] = $event">
+              <h4 class="card-title ms-rotate-icon" accordion-heading="">
+                <a [ngClass]="{ 'collapsed' : !openTabs[i] }" role="button">
+                  <i class="zmdi zmdi-{{ item?.icon }}"></i> {{ item?.title }}
+                </a>
+              </h4>
+              <p>{{ item?.description }}</p>
+            </accordion-group>
+          </accordion>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-5">
+      <sidebar-find-us></sidebar-find-us>
+      <sidebar-member-form></sidebar-member-form>
+    </div>
+  </div>
+</div>

@@ -5,4 +5,4 @@ Information request from the website
 
 We have received the following query from the website.
 
-@{ await IncludeAsync("Messages.Templates.Partials._ContactUsDetails.Text.cshtml", Model); }
+@{ await IncludeAsync($"Services.Email.Messages.Templates.Partials._{Model.GetType().Name}Details.Text.cshtml", Model); }

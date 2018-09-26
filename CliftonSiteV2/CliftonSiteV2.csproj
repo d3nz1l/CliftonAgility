@@ -50,8 +50,10 @@
     <Content Remove="Services\Email\Messages\Templates\MembershipForm.Text.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Other.Html.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\Other.Text.cshtml" />
-    <Content Remove="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Html.cshtml" />
-    <Content Remove="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Text.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_EmailMessageDetails.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_EmailMessageDetails.Text.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_MembershipFormDetails.Html.cshtml" />
+    <Content Remove="Services\Email\Messages\Templates\Partials\_MembershipFormDetails.Text.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\_Layout.cshtml" />
     <Content Remove="Services\Email\Messages\Templates\_ViewStart.cshtml" />
   </ItemGroup>
@@ -85,8 +87,12 @@
     <EmbeddedResource Include="Services\Email\Messages\Templates\Membership.Text.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </EmbeddedResource>
-    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Html.cshtml" />
-    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_ContactUsDetails.Text.cshtml">
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_MembershipFormDetails.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_MembershipFormDetails.Text.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_EmailMessageDetails.Html.cshtml" />
+    <EmbeddedResource Include="Services\Email\Messages\Templates\Partials\_EmailMessageDetails.Text.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Email\Messages\Templates\_Layout.cshtml" />
