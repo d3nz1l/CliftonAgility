@@ -5,3 +5,9 @@
 .mt-minus-40 {
   margin-top: -40rem !important;
 }
+
+@media (max-width: 550px) {
+  .text-center-sm {
+    text-align: center;
+  }
+}

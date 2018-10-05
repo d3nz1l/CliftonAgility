@@ -123,7 +123,7 @@
               <div class="col-md-9">{{form.get('message').value}}</div>
             </div>
             <p>
-              <button class="btn btn-lg btn-primary btn-raised" (click)="resetForm(true)">Try Again</button>
+              <button class="btn btn-lg btn-primary btn-raised" (click)="resetForm(true)">Send Another Message</button>
             </p>
           </div>
         </div>
@@ -140,16 +140,24 @@
               <li><a href="mailto:info@cliftonagility.co.uk">General Enquiries - info@cliftonagility.co.uk</a></li>
             </ul>
             <p>
-              <button class="btn btn-lg btn-primary btn-raised" (click)="resetForm(false)">Send Another Message</button>
+              <button class="btn btn-lg btn-primary btn-raised" (click)="resetForm(false)">Try Again</button>
             </p>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xl-4 col-lg-5">
-      <sidebar-find-us></sidebar-find-us>
-      <sidebar-help></sidebar-help>
-      <sidebar-member-form></sidebar-member-form>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-12">
+          <sidebar-find-us></sidebar-find-us>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-12">
+          <sidebar-help></sidebar-help>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-12">
+          <sidebar-member-form></sidebar-member-form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

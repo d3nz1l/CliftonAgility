@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td>
-            @{ await IncludeAsync("Services.Email.Messages.Templates.Partials._ContactUsDetails.Html.cshtml", Model); }
+            @{ await IncludeAsync($"Services.Email.Messages.Templates.Partials._{Model.GetType().Name}Details.Html.cshtml", Model); }
         </td>
     </tr>
 </table>

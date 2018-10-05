@@ -17,18 +17,20 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 /// Component imports
 import { AppComponent } from './app.component';
+import { CacTabsModule } from './components/tabset.modue';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { CacTabsModule } from './components/tabset.modue';
 import { SideBarFindUsComponent } from './sidebar/find-us.component';
 import { SideBarMemberFormComponent } from './sidebar/member-form.component';
 import { SideBarHelpComponent } from './sidebar/help.component';
+import { SlideMenuComponent } from './nav-menu/slide-menu.component';
 
 // Providor imports
 import { ColorHelper } from './helpers/color-helper.component';
 import { RippleComponent } from './helpers/ripples.component';
 import { Validation } from './validators/validation-helper.provider';
+import { SiteMap } from './helpers/site-map.provider';
 
 // Layout components
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
@@ -47,11 +49,19 @@ import { HelpAdviceComponent } from './help-advice/help-advice.component';
 
 /// Directives
 import { CustomMinDirective } from './validators/min-validator.directive';
+import { CacAccordianDirective } from './components/accordian.directive';
+import { CacAccordianGroupDirective } from './components/accordian-group.directive';
+import { CacAccordianGroupHeadingDirective } from './components/accordian-group-heading.directive';
+import { CacAccordianGroupPanelDirective } from './components/accordian-group-panel.directive';
 
 @NgModule({
   declarations: [
     AboutUsComponent,
     AppComponent,
+    CacAccordianDirective,
+    CacAccordianGroupDirective,
+    CacAccordianGroupHeadingDirective,
+    CacAccordianGroupPanelDirective,
     ClubClothingComponent,
     ContactUsComponent,
     CustomMinDirective,
@@ -68,6 +78,7 @@ import { CustomMinDirective } from './validators/min-validator.directive';
     SideBarFindUsComponent,
     SideBarHelpComponent,
     SideBarMemberFormComponent,
+    SlideMenuComponent,
     DefaultLayoutComponent,
     FullScreenLayoutComponent
   ],
@@ -117,6 +128,7 @@ import { CustomMinDirective } from './validators/min-validator.directive';
   ],
   providers: [
     ColorHelper,
+    SiteMap,
     Validation,
     {
       provide: RECAPTCHA_SETTINGS,

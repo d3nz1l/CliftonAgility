@@ -5,7 +5,6 @@ import {
 } from '@angular/core';
 import { CacNgbTabset } from './tabset.component';
 import { TabDirective } from 'ngx-bootstrap';
-import { extend } from 'webdriver-js-extender';
 
 @Directive({ selector: 'tab, [tab]' })
 export class CacTabDirective extends TabDirective {

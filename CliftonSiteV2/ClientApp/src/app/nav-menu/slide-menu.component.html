@@ -1,0 +1,37 @@
+<a class="ms-toggle-left btn-navbar-menu" (click)="toggle()">
+  <i class="zmdi zmdi-menu"></i>
+</a>
+<div class="ms-slidebar sb-slidebar sb-left sb-style-overlay" id="ms-slidebar" [ngClass]="{ 'open': isOpen }" (click)="toggle();">
+  <div class="sb-slidebar-container">
+    <header>
+      <div class="ms-slidebar-title">
+        <div class="ms-slidebar-t">
+          <h3>
+            <span>Clifton</span> Agility Club
+          </h3>
+        </div>
+      </div>
+    </header>
+
+    <ul class="ms-slidebar-menu" role="tablist" aria-multiselectable="true" cac-accordian closeOthers="true">
+
+      <ng-template ngFor let-menuItem [ngForOf]="menuItems">
+        <li *ngIf="!menuItem.hasChildren()" role="tabpanel">
+          <a class="link" [routerLink]="[menuItem.link]" [attr.fragment]="menuItem.fragment" [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <i class="zmdi zmdi-{{menuItem.icon}}"></i> {{menuItem.name}}
+          </a>
+        </li>
+        <li *ngIf="menuItem.hasChildren()" class="card" role="tab" id="sch1" cac-accordian-group (isOpenChange)="groupPanel.toggle()">
+          <a role="button" cac-accordian-heading>
+            <i class="zmdi zmdi-{{menuItem.icon}}"></i> {{menuItem.name}}
+          </a>
+          <ul class="card-collapse collapse" role="tabpanel" #groupPanel="AccordianGroupPanel" cac-accordian-panel>
+            <li *ngFor="let childItem of menuItem.children">
+              <a [routerLink]='[childItem.link]' [attr.fragment]="menuItem.fragment" [routerLinkActive]='["active"]' [routerLinkActiveOptions]='{ exact: true }'>{{childItem.name}}</a>
+            </li>
+          </ul>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+</div>

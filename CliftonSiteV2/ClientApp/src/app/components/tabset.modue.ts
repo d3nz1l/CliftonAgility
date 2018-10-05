@@ -1,25 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { NgTranscludeDirective } from 'ngx-bootstrap';
-import { TabHeadingDirective } from 'ngx-bootstrap';
+import { CacTabHeadingDirective } from './tab-heading.directive';
 import { CacNgbTabset } from './tabset.component';
 import { CacTabDirective } from './tab.directive';
+import { CacTranscludeDirective } from './transclude.directive';
 import { TabsetConfig } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [CommonModule],
   declarations: [
-    NgTranscludeDirective,
+    CacTranscludeDirective,
     CacTabDirective,
     CacNgbTabset,
-    TabHeadingDirective
+    CacTabHeadingDirective
   ],
   exports: [
     CacTabDirective,
     CacNgbTabset,
-    TabHeadingDirective,
-    NgTranscludeDirective
+    CacTabHeadingDirective,
+    CacTranscludeDirective
   ]
 })
 export class CacTabsModule {

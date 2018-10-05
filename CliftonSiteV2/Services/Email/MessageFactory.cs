@@ -23,8 +23,8 @@ namespace CliftonSiteV2.Services.Email
         {
             var clubAddress = this.GetClubAddress(messageModel.MessageType);
 
-            var messageToTheClub = this.BuildMessageAsync(messageModel.MessageType.ToString(), messageModel, messageModel.EmailAddress, clubAddress);
-            var messageToUser = this.BuildMessageAsync("Confirmation", messageModel, clubAddress, messageModel.EmailAddress);
+            var messageToTheClub = this.BuildMessageAsync(messageModel.MessageType.ToString(), messageModel, clubAddress, clubAddress, messageModel.EmailAddress);
+            var messageToUser = this.BuildMessageAsync("Confirmation", messageModel, clubAddress, messageModel.EmailAddress, clubAddress);
 
             await Task.WhenAll(messageToTheClub, messageToUser);
 
@@ -35,14 +35,14 @@ namespace CliftonSiteV2.Services.Email
             };
         }
 
-        private async Task<MailMessage> BuildMessageAsync<T>(string messageType, T messageModel, string fromAddress, string toAddress)
+        private async Task<MailMessage> BuildMessageAsync<T>(string messageType, T messageModel, string fromAddress, string toAddress, string replyToAddress)
             where T : EmailModel
         {
             try
             {
                 var messageContent = await this.templateBuilder.BuildMessageAsync(messageType, messageModel);
 
-                var message = this.CreateMessage(fromAddress, toAddress, $"{messageModel.MessageType} Request from the Website", messageContent);
+                var message = this.CreateMessage(fromAddress, toAddress, replyToAddress, $"{messageModel.MessageType} Request from the Website", messageContent);
 
                 return message;
             }
@@ -53,7 +53,7 @@ namespace CliftonSiteV2.Services.Email
             }
         }
 
-        private MailMessage CreateMessage(string from, string to, string subject, MessageContent content)
+        private MailMessage CreateMessage(string from, string to, string reply, string subject, MessageContent content)
         {
             var message = new MailMessage
             {
@@ -61,6 +61,8 @@ namespace CliftonSiteV2.Services.Email
                 Body = content.TextContent,
                 Subject = subject
             };
+
+            message.ReplyToList.Add(reply);
 
             message.To.Add(to);
             message.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(content.HtmlContent, new ContentType("text/html")));
