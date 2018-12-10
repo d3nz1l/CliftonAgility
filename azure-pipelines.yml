@@ -16,15 +16,11 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   
-- task: NuGetCommand@2
+- task: MSBuild@1
   displayName: 'NuGet pack'
   inputs:
-    command: pack
-    packagesToPack: '**/*.csproj'
-    versioningScheme: byPrereleaseNumber
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    project: '**/*.csproj'
+    msbuildArguments: '/t:pack'
     
 - task: NuGetCommand@2
   displayName: 'NuGet push'
