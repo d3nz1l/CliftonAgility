@@ -8,17 +8,14 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-  
-variables:
   Major: '1'
   Minor: '0'
   Patch: '0'
 
 steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  
 - task: NuGetCommand@2
   displayName: 'NuGet pack'
   inputs:
