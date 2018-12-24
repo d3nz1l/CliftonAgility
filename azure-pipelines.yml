@@ -13,6 +13,11 @@ variables:
   Patch: '0'
 
 steps:
+- script: dotnet restore
+  displayName: 'dotnet restore'
+
+
+steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
@@ -26,12 +31,10 @@ steps:
     overWrite: true
     #flattenFolders: false # Optional
 
-# Publish build artifacts to Azure Pipelines/TFS or a file share
-- task: PublishBuildArtifacts@1
+# Publish site to Azure Pipelines/TFS or a file share
+- task: DotNetCoreCLI@2
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'CliftonSite' 
-    #publishLocation: 'Container' # Options: container, filePath
-    #targetPath: # Required when publishLocation == FilePath
-    #parallel: false # Optional
-    #parallelCount: # Optional
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
