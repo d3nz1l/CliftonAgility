@@ -15,16 +15,3 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-  
-- task: MSBuild@1
-  displayName: 'NuGet pack'
-  inputs:
-    project: '**/*.csproj'
-    msbuildArguments: '/t:pack'
-    
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
-  inputs:
-    command: push
-    publishVstsFeed: 'my-packages'
-    allowPackageConflicts: true
