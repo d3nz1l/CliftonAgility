@@ -19,16 +19,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-# Copy Files
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: $(Build.SourcesDirectory)
-    contents: '**' 
-    targetFolder: $(Build.ArtifactStagingDirectory)
-    #cleanTargetFolder: false # Optional
-    overWrite: true
-    #flattenFolders: false # Optional
-
 # Publish site to Azure Pipelines/TFS or a file share
 - task: DotNetCoreCLI@2
   inputs:
