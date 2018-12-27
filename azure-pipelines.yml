@@ -21,6 +21,7 @@ steps:
 
 # Publish site to Azure Pipelines/TFS or a file share
 - task: DotNetCoreCLI@2
+  displayName: 'Build and publish client app'
   inputs:
     command: publish
     publishWebProjects: True
