@@ -13,10 +13,17 @@ variables:
   Patch: '0'
 
 steps:
+
+# Use latest Nuget verison
+- task: NuGetToolInstaller@0
+  displayName: "NuGet use 4.6.2"
+  inputs:
+    versionSpec: 4.6.2
+
 - script: dotnet restore
   displayName: 'dotnet restore'
   
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) --no-restore
   displayName: 'dotnet build $(buildConfiguration)'
 
 # Publish site to Azure Pipelines/TFS or a file share
@@ -25,5 +32,11 @@ steps:
   inputs:
     command: publish
     publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(BuildConfiguration) --no-restore --output $(Build.ArtifactStagingDirectory)/app/pkg'
     zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish artifacts"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/app'
+    ArtifactName: CliftonSite
