@@ -33,7 +33,6 @@ steps:
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --no-restore --output $(Build.ArtifactStagingDirectory)/app/pkg'
-    zipAfterPublish: True
 
 - task: PublishBuildArtifacts@1
   displayName: "Publish artifacts"
