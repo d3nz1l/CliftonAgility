@@ -27,7 +27,7 @@ namespace CliftonSiteV2.Services.Email
         private RazorLightEngine BuildEngine()
         {
             return new RazorLightEngineBuilder()
-                .UseEmbeddedResourcesProject(this.GetType())
+                .UseEmbeddedResourcesProject(typeof(Program))
                 .UseMemoryCachingProvider()
                 .Build();
         }
