@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  constructor() {
+  constructor(angulartics2GoogleTagManager: Angulartics2GoogleTagManager) {
+
+    angulartics2GoogleTagManager.startTracking();
+
     console.log("Welcome to .........")
     console.log(
       " $$$$$$\\  $$\\ $$\\  $$$$$$\\    $$\\                                $$$$$$\\            $$\\ $$\\ $$\\   $$\\                      $$$$$$\\  $$\\                $$\\       \r\n" +

@@ -14,6 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { Angulartics2Module } from 'angulartics2';
 
 /// Component imports
 import { AppComponent } from './app.component';
@@ -99,6 +100,7 @@ import { CacAccordianGroupPanelDirective } from './components/accordian-group-pa
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
+    Angulartics2Module.forRoot(),
     RouterModule.forRoot([
       {
         path: '',

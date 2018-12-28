@@ -26,6 +26,7 @@
     "@angular/router": "^6.1.0",
     "@ng-select/ng-select": "^2.3.6",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "angulartics2": "^7.2.4",
     "animate.css": "^3.6.1",
     "aspnet-prerendering": "^3.0.1",
     "bingmaps": "2.0.3",
