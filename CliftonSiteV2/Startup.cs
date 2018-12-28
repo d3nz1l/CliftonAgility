@@ -31,8 +31,6 @@ namespace CliftonSiteV2
                 .AddMvc(cfg => cfg.Filters.Add<AutoValidateAntiforgeryTokenAttribute>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDataProtection();
-
             services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
             services.AddHttpClient();
 
