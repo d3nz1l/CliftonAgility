@@ -3,7 +3,7 @@
 .ms-hero {
 
   &-bg {
-    background-image: url('../../assets/img/dog-walk.jpg');
+    background-image: url('../../assets/img/loki-tunnel.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -62,5 +62,67 @@
       color: #fff !important;
       background-color: $c;
     }
+  }
+}
+
+.wrap {
+  &-chance {
+    background-color: $color-dark;
+    color: $color-light-light;
+    background-image: url("../../assets/img/chance.jpg");
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    animation: moveBack;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    padding: 12rem 0;
+  }
+
+  &-jump {
+    background-color: $color-dark;
+    color: $color-light-light;
+    background-image: url("../../assets/img/agility-jumps.jpg");
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: fade-out(darken($color-primary, 28%), 0.2);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+.list-basic {
+  list-style-type: none;
+
+  li {
+    padding-left: 1rem;
+
+    p {
+      padding-left: 1rem;
+    }
+  }
+
+  li:before {
+    font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+    content: "\f32f";
+    position: relative;
+    left: -2rem
   }
 }
