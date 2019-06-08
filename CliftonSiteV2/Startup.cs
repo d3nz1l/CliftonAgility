@@ -34,6 +34,12 @@ namespace CliftonSiteV2
             services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
             services.AddHttpClient();
 
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 443;
+            });
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
