@@ -51,7 +51,7 @@ namespace CliftonSiteV2
             else
             {
                 app.UseExceptionHandler("/Error");
-                ////app.UseHsts();
+                app.UseHsts();
             }
 
             app.Use(next => context =>
@@ -69,7 +69,7 @@ namespace CliftonSiteV2
                 return next(context);
             });
 
-            ////app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
