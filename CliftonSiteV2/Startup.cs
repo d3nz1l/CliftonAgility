@@ -29,10 +29,16 @@ namespace CliftonSiteV2
         {
             services
                 .AddMvc(cfg => cfg.Filters.Add<AutoValidateAntiforgeryTokenAttribute>())
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
             services.AddHttpClient();
+
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 443;
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -51,7 +57,7 @@ namespace CliftonSiteV2
             else
             {
                 app.UseExceptionHandler("/Error");
-                ////app.UseHsts();
+                app.UseHsts();
             }
 
             app.Use(next => context =>
@@ -69,7 +75,7 @@ namespace CliftonSiteV2
                 return next(context);
             });
 
-            ////app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
