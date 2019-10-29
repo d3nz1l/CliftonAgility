@@ -42,7 +42,7 @@ namespace CliftonSiteV2.Services.Email
             {
                 var messageContent = await this.templateBuilder.BuildMessageAsync(messageType, messageModel);
 
-                var message = this.CreateMessage(fromAddress, toAddress, replyToAddress, $"{messageModel.MessageType} Request from the Website", messageContent);
+                var message = this.CreateMessage("club@cliftonagility.co.uk", toAddress, replyToAddress, $"{messageModel.MessageType} Request from the Website", messageContent);
 
                 return message;
             }

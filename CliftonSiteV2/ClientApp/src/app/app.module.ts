@@ -3,18 +3,19 @@
 /// Angular imports
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 /// Vender imports
 import { AgmCoreModule } from '@agm/core';
-import { BsDatepickerModule, BsDropdownModule, CollapseModule, AccordionModule  } from 'ngx-bootstrap';
+import { BsDatepickerModule, BsDropdownModule, CollapseModule, AccordionModule } from 'ngx-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RecaptchaFormsModule } from 'ng-recaptcha';
 import { Angulartics2Module } from 'angulartics2';
+import { CookieService } from 'ngx-cookie-service';
 
 /// Component imports
 import { AppComponent } from './app.component';
@@ -56,87 +57,88 @@ import { CacAccordianGroupHeadingDirective } from './components/accordian-group-
 import { CacAccordianGroupPanelDirective } from './components/accordian-group-panel.directive';
 
 @NgModule({
-  declarations: [
-    AboutUsComponent,
-    AppComponent,
-    CacAccordianDirective,
-    CacAccordianGroupDirective,
-    CacAccordianGroupHeadingDirective,
-    CacAccordianGroupPanelDirective,
-    ClubClothingComponent,
-    ContactUsComponent,
-    CustomMinDirective,
-    DownloadsComponent,
-    FooterComponent,
-    HeaderComponent,
-    HelpAdviceComponent,
-    HomeComponent,
-    MembershipComponent,
-    NavMenuComponent,
-    OurVenueComponent,
-    PrivacyPolicyComponent,
-    RippleComponent,
-    SideBarFindUsComponent,
-    SideBarHelpComponent,
-    SideBarMemberFormComponent,
-    SlideMenuComponent,
-    DefaultLayoutComponent,
-    FullScreenLayoutComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgSelectModule,
-    DeviceDetectorModule.forRoot(),
-    RecaptchaModule.forRoot(),
-    RecaptchaFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC0O1HVq24zqR_7c2CbDESfMJZ79Se9GLQ'
-    }),
-    BsDatepickerModule.forRoot(),
-    CacTabsModule.forRoot(),
-    CollapseModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    AccordionModule.forRoot(),
-    Angulartics2Module.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: DefaultLayoutComponent,
-        children: [
-          { path: '', component: HomeComponent, pathMatch: 'full' },
-          { path: 'about-us', component: AboutUsComponent },
-          { path: 'contact-us', component: ContactUsComponent },
-          { path: 'club-clothing', component: ClubClothingComponent },
-          { path: 'downloads', component: DownloadsComponent },
-          { path: 'membership', component: MembershipComponent },
-          { path: 'privacy-policy', component: PrivacyPolicyComponent },
-          { path: 'help-advice', component: HelpAdviceComponent }
-        ]
-      },
-      {
-        path: '',
-        component: FullScreenLayoutComponent,
-        children: [
-          { path: 'our-venue', component: OurVenueComponent }
-        ]
-      }
-    ], {
-        scrollPositionRestoration: 'enabled',
-        anchorScrolling: 'enabled'
-      })
-  ],
-  providers: [
-    ColorHelper,
-    SiteMap,
-    Validation,
-    {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '6LdjzA4TAAAAAEHRViqv4q4daAAW-y83JdYekxfS' }
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AboutUsComponent,
+        AppComponent,
+        CacAccordianDirective,
+        CacAccordianGroupDirective,
+        CacAccordianGroupHeadingDirective,
+        CacAccordianGroupPanelDirective,
+        ClubClothingComponent,
+        ContactUsComponent,
+        CustomMinDirective,
+        DownloadsComponent,
+        FooterComponent,
+        HeaderComponent,
+        HelpAdviceComponent,
+        HomeComponent,
+        MembershipComponent,
+        NavMenuComponent,
+        OurVenueComponent,
+        PrivacyPolicyComponent,
+        RippleComponent,
+        SideBarFindUsComponent,
+        SideBarHelpComponent,
+        SideBarMemberFormComponent,
+        SlideMenuComponent,
+        DefaultLayoutComponent,
+        FullScreenLayoutComponent
+    ],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        DeviceDetectorModule.forRoot(),
+        RecaptchaModule.forRoot(),
+        RecaptchaFormsModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyC0O1HVq24zqR_7c2CbDESfMJZ79Se9GLQ'
+        }),
+        BsDatepickerModule.forRoot(),
+        CacTabsModule.forRoot(),
+        CollapseModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        AccordionModule.forRoot(),
+        Angulartics2Module.forRoot(),
+        RouterModule.forRoot([
+            {
+                path: '',
+                component: DefaultLayoutComponent,
+                children: [
+                    { path: '', component: HomeComponent, pathMatch: 'full' },
+                    { path: 'about-us', component: AboutUsComponent },
+                    { path: 'contact-us', component: ContactUsComponent },
+                    { path: 'club-clothing', component: ClubClothingComponent },
+                    { path: 'downloads', component: DownloadsComponent },
+                    { path: 'membership', component: MembershipComponent },
+                    { path: 'privacy-policy', component: PrivacyPolicyComponent },
+                    { path: 'help-advice', component: HelpAdviceComponent }
+                ]
+            },
+            {
+                path: '',
+                component: FullScreenLayoutComponent,
+                children: [
+                    { path: 'our-venue', component: OurVenueComponent }
+                ]
+            }
+        ], {
+            scrollPositionRestoration: 'enabled',
+            anchorScrolling: 'enabled'
+        })
+    ],
+    providers: [
+        ColorHelper,
+        SiteMap,
+        CookieService,
+        Validation,
+        {
+            provide: RECAPTCHA_SETTINGS,
+            useValue: { siteKey: '6LdjzA4TAAAAAEHRViqv4q4daAAW-y83JdYekxfS' }
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 using System;
 using CliftonSiteV2.Configuration;
+using CliftonSiteV2.Middleware;
 using CliftonSiteV2.Services.Email;
 using CliftonSiteV2.Services.Recaptcha;
 using Microsoft.AspNetCore.Antiforgery;
@@ -27,18 +28,13 @@ namespace CliftonSiteV2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
+
             services
                 .AddMvc(cfg => cfg.Filters.Add<AutoValidateAntiforgeryTokenAttribute>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddAntiforgery(opts => opts.HeaderName = "X-XSRF-TOKEN");
             services.AddHttpClient();
-
-            services.AddHttpsRedirection(options =>
-            {
-                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                options.HttpsPort = 443;
-            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -62,14 +58,12 @@ namespace CliftonSiteV2
 
             app.Use(next => context =>
             {
-                if (
-                    string.Equals(context.Request.Path.Value, "/", StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(context.Request.Path.Value, "/index.html", StringComparison.OrdinalIgnoreCase))
+                if (!context.Request.Cookies.ContainsKey("X-XSRF-TOKEN"))
                 {
                     // We can send the request token as a JavaScript-readable cookie, and Angular will use it by default.
                     var tokens = antiforgery.GetAndStoreTokens(context);
-                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
-                        new CookieOptions() { HttpOnly = false });
+                    context.Response.Cookies.Append("cac-id", tokens.RequestToken,
+                        new CookieOptions() { HttpOnly = false, Secure = true });
                 }
 
                 return next(context);
@@ -78,6 +72,7 @@ namespace CliftonSiteV2
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAntiForgeryTokenResponse();
 
             app.UseMvc(routes =>
             {
