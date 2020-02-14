@@ -22,18 +22,14 @@ namespace CliftonSiteV2.Middleware
 
         public Task Invoke(HttpContext httpContext)
         {
-            if (
-                httpContext.Request.Path.HasValue &&
-                (httpContext.Request.Path.Value.ToLower().Contains("/api/") ||
-                 httpContext.Request.Path.Value.ToLower().Contains("membership") ||
-                 httpContext.Request.Path.Value.ToLower().Contains("contact-us")))
+            if (httpContext.Request.Path.HasValue)
             {
                 var token = _antiForgeryService.GetAndStoreTokens(httpContext);
 
                 httpContext.Response.Cookies.Append(
                     "cac-id",
                     token.RequestToken,
-                    new CookieOptions { HttpOnly = false, Secure = true, SameSite = SameSiteMode.Strict });
+                    new CookieOptions { HttpOnly = false, Secure = false, SameSite = SameSiteMode.Strict });
             }
 
             return _next(httpContext);

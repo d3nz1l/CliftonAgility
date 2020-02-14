@@ -62,8 +62,8 @@ namespace CliftonSiteV2
                 {
                     // We can send the request token as a JavaScript-readable cookie, and Angular will use it by default.
                     var tokens = antiforgery.GetAndStoreTokens(context);
-                    context.Response.Cookies.Append("cac-id", tokens.RequestToken,
-                        new CookieOptions() { HttpOnly = false, Secure = true });
+                    context.Response.Cookies.Append("X-XSRF-TOKEN", tokens.RequestToken,
+                        new CookieOptions() { HttpOnly = false, Secure = false });
                 }
 
                 return next(context);
